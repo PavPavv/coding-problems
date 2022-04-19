@@ -10,6 +10,16 @@
 ```
 
 <details>
-<summary>Example</summary>
-<pre>$ This dropdown contains<br>a code block!</pre>
+<summary>Solution</summary>
+<pre>
+<script>
+  function findFirstLeft(array, target) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === target) return i;
+    }
+    return -1;
+  }
+  console.log(findFirstLeft([1,2,3,1,2,3], 3));
+</script>
+</pre>
 </details>
