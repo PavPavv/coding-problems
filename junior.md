@@ -1,6 +1,6 @@
 # Junior level coding tasks
 
-1. Find **first** left target in the array.
+1. Find first **left** target in the array.
 ```javascript
 /**
  * @param {number}
@@ -11,18 +11,40 @@
 
 <details>
 <summary>Solution</summary>
-<details>
-  <summary>Solution 1</summary>
-  <pre>
-    <script>
-      function findFirstLeft(array, target) {
-        for (let i = 0; i < array.length; i++) {
-          if (array[i] === target) return i;
-        }
-        return -1;
-      }
-      console.log(findFirstLeft([1,2,3,1,2,3], 3));
-    </script>
-    </pre>
+<pre>
+<script>
+  function findFirstLeft(array, target) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === target) return i;
+    }
+    return -1;
+  }
+  console.log(findFirstLeft([1,2,3,1,2,3], 3));
+</script>
+</pre>
 </details>
+
+2. Find first **right** target in the array.
+```javascript
+/**
+ * @param {number}
+ * @return {number}
+ * f([1,2,3,1,2,3],3) -> 5
+*/
+```
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+  function findFirstRight(array, target) {
+    let counter = -1;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === target) counter = i;
+    }
+    return counter;
+  }
+  console.log(findFirstRight([1,2,3,1,2,3], 3));
+</script>
+</pre>
 </details>
