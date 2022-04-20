@@ -150,3 +150,60 @@
 
 ---
 
+6. Find sum of the range in between **two** numbers.
+```javascript
+/**
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ * f(1,5) -> 15
+*/
+```
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+  function getSumOfTwoNumsRange(a,b) {
+    const start = a > b ? b : a;
+    const end = a > b ? a : b;
+    let counter = 0;
+
+    for (let i = start; i <= end; i++) {
+      counter += i;
+    }
+    return counter;
+  }
+  console.log(getSumOfTwoNumsRange(1,5));
+</script>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+---
+
+7. Find middle character of the string if the string length is even or first char right after the middle if the string length is odd.
+```javascript
+/**
+ * @param {string} str
+ * @return {string}
+ * f('testing') -> 't'
+*/
+```
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+  function findMiddle(str) {
+    const isEven = str.length % 2 === 0 ? true : false;
+    const oddMiddle = str[(str.length - 1) / 2];
+    const evenMiddle = str[str.length / 2];
+    return isEven ? evenMiddle : oddMiddle;
+  }
+  console.log(findMiddle('test'));
+  console.log(findMiddle('testing'));
+</script>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
