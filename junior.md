@@ -25,6 +25,7 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+
 ---
 
 2. Find first **right** target in the array.
@@ -53,6 +54,7 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+
 ---
 
 3. Find out is a string palindrome or not.
@@ -77,6 +79,7 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+
 ---
 
 4. Find elements of array having target's length.
@@ -101,6 +104,7 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+
 ---
 
 5. Count amount of vowels in the word.
@@ -143,5 +147,6 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+
 ---
 
