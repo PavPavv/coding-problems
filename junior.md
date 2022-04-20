@@ -22,7 +22,7 @@
   }
   console.log(findFirstLeft([1,2,3,1,2,3], 3));
 </script>
-<p>O(n)</p>
+<p><strong>O(n)</strong></p>
 </pre>
 </details>
 
@@ -49,7 +49,7 @@
   }
   console.log(findFirstRight([1,2,3,1,2,3], 3));
 </script>
-<p>O(n)</p>
+<p><strong>O(n)</strong></p>
 </pre>
 </details>
 
@@ -63,7 +63,7 @@
 ```
 
 <details>
-<summary>Solution 1</summary>
+<summary>Solution</summary>
 <pre>
 <script>
   function isPalindrome = (str) => {
@@ -72,11 +72,11 @@
   };
   console.log(isPalindrome('ana')); // true
 </script>
-<p>O(n)</p>
+<p><strong>O(n)</strong></p>
 </pre>
 </details>
 
-4. Find elements of array having target length.
+4. Find elements of array having target's length.
 ```javascript
 /**
  * @param {string[]} arr
@@ -87,7 +87,7 @@
 ```
 
 <details>
-<summary>Solution 1</summary>
+<summary>Solution</summary>
 <pre>
 <script>
   function findByParam(arr, target) {
@@ -95,6 +95,47 @@
   }
   console.log(findByParam(["Mark", "John", "Anna", "Maria"]));
 </script>
-<p>O(n)</p>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+5. Count amount of vowels in the word.
+```javascript
+/**
+ * @param {string} word
+ * @return {number}
+ * f('wolf') -> 1
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function vowelsCounter(word) {
+    const VOWELS = ['a','e','i','o','u'];
+    let counter = 0;
+    for (let i = 0; i < word.length; i++) {
+      if (VOWELS.includes(word[i])) counter++;
+    }
+    return counter;
+  }
+  console.log(vowelsCounter('wolf'));
+</script>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+  function vowelsCounter(word) {
+    const matched = word.match(/[aeiou]/gi);
+    return matched ? matched.length : 0;
+  }
+  console.log(vowelsCounter('wolf'));
+</script>
+<p><strong>O(n)</strong></p>
 </pre>
 </details>
