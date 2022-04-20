@@ -25,6 +25,7 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+---
 
 2. Find first **right** target in the array.
 ```javascript
@@ -52,6 +53,7 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+---
 
 3. Find out is a string palindrome or not.
 ```javascript
@@ -75,6 +77,7 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+---
 
 4. Find elements of array having target's length.
 ```javascript
@@ -98,6 +101,7 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+---
 
 5. Count amount of vowels in the word.
 ```javascript
@@ -139,3 +143,5 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+---
+
