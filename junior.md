@@ -207,3 +207,51 @@
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+
+8. Transform number > 99 into number consisting of square of each number
+```javascript
+/**
+ * @param {number} num
+ * @return {number}
+ * f(25) -> 425 (4+25)
+*/
+```
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+const squareDigits = (num) => {
+  return +num
+    .toString()
+    .split('')
+    .map(n => n * n)
+    .join('')
+};
+console.log(squareDigits(25));
+</script>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+9. Replace character from the string
+```javascript
+/**
+ * @param {string} str
+ * @return {string}
+ * f('Hell#o!') -> 'Hello!'
+*/
+```
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+const removeChar = (str) => {
+  return str.replace(/#/gi,'');
+};
+console.log(removeChar('Hell#o!'));
+</script>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
