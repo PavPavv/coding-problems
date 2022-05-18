@@ -22,6 +22,7 @@
   }
   console.log(findFirstLeft([1,2,3,1,2,3], 3));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -51,6 +52,7 @@
   }
   console.log(findFirstRight([1,2,3,1,2,3], 3));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -76,6 +78,7 @@
   };
   console.log(isPalindrome('ana')); // true
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -101,6 +104,7 @@
   }
   console.log(findByParam(["Mark", "John", "Anna", "Maria"]));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -130,6 +134,7 @@
   }
   console.log(vowelsCounter('wolf'));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -144,6 +149,7 @@
   }
   console.log(vowelsCounter('wolf'));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -168,7 +174,6 @@
     const start = a > b ? b : a;
     const end = a > b ? a : b;
     let counter = 0;
-
     for (let i = start; i <= end; i++) {
       counter += i;
     }
@@ -176,6 +181,7 @@
   }
   console.log(getSumOfTwoNumsRange(1,5));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -204,6 +210,7 @@
   console.log(findMiddle('test'));
   console.log(findMiddle('testing'));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -230,6 +237,7 @@ const squareDigits = (num) => {
 };
 console.log(squareDigits(25));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
@@ -252,6 +260,7 @@ const removeChar = (str) => {
 };
 console.log(removeChar('Hell#o!'));
 </script>
+<div>Complexity:</div>
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
