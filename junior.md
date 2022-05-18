@@ -208,7 +208,7 @@
 </pre>
 </details>
 
-8. Transform number > 99 into number consisting of square of each number
+8. Transform number into number consisting of square of each number. Number must be more than 9;
 ```javascript
 /**
  * @param {number} num
