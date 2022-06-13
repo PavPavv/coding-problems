@@ -152,7 +152,7 @@
   console.log(count1());  //  103
 </script>
 <div>Complexity:</div>
-<p><strong>O(n)</strong></p>
+<p><strong>O(1)</strong></p>
 </pre>
 </details>
 
@@ -160,7 +160,106 @@
 <summary>Solution 2</summary>
 <pre>
 <script>
+  const counter = (function () {
+    let counter = 0;
+    return function () {
+      return counter++;
+    }
+  })();
+  counter();
+  counter();
+  counter();
+  console.log(counter())  //  3
+</script>
+<div>Complexity:</div>
+<p><strong>O(1)</strong></p>
+</pre>
+</details>
 
+---
+
+5. Create string with char counter.
+
+```javascript
+/**
+ * @param {string} str
+ * @return {string}
+ * f('AABBBCCCCDDDDDE') -> 'A2B3C4D5E1'
+*/
+```
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function numberifyStr(str) {
+    const obj = {};
+    let result = '';
+    for (let i = 0; i < str.length; i++) {
+      obj[str[i]] = obj[str[i]] ? obj[str[i]] + 1 : 1;
+    }
+    for (char in obj) {
+      result += `${char}${obj[char]}`;
+    }
+    return result;
+  };
+  console.log(numberifyStr('AABBBCCCCDDDDDE'));  //  A2B3C4D5E1
+</script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+---
+
+6. Fibonacci with recursion
+
+```javascript
+/**
+ * @param {number} num
+ * @return {number}
+ * f(9) -> 34
+*/
+```
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function fib(num) {
+    if (num < 2) return num;
+    return fib(num - 1) + fib(num - 2);
+  };
+  console.log(fib(9));  //  34
+</script>
+<div>Complexity:</div>
+<p><strong>O(2^n)</strong></p>
+</pre>
+</details>
+
+---
+
+7. Fibonacci without recursion
+
+```javascript
+/**
+ * @param {number} num
+ * @return {number}
+ * f(9) -> 34
+*/
+```
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function fib(num) {
+    const result = [0, 1];
+    for (let i = 2; i <= num; i++) {
+      let prev1 = result[i - 1];
+      let prev2 = result[i - 2];
+      result.push(prev1 + prev2);
+    }
+    return result[num];
+  };
+console.log(fib(9));  //  34
 </script>
 <div>Complexity:</div>
 <p><strong>O(n)</strong></p>

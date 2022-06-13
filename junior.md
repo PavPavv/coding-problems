@@ -264,3 +264,72 @@ console.log(removeChar('Hell#o!'));
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+
+10. Find dublicated sequence
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ * f([2,4,5,1,3,3,7,8,9,10,300]) -> [3,3]
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function isRepeat(arr) {
+    if (Array.isArray(arr)) {
+      for (let i = 1; i < arr.length; i++) {
+        const prev = arr[i - 1];
+        if (prev === arr[i]) return true;
+      }
+    }
+    return false;
+  }
+  console.log(isRepeat(''));
+  console.log(isRepeat([2,4,5,1,3,45,7,8,9,10,300]));
+  console.log(isRepeat([1,1,2,4,5,1,3,3,7,8,9,10,300]));
+  console.log(isRepeat([2,4,5,1,3,3,7,8,9,10,300]));
+</script>
+<div>Complexity:</div>
+<p><strong>O(n - 1)</strong></p>
+</pre>
+</details>
+
+10. Name proper sequence of the event loop calls
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  new  Promise(function(resolve, reject) {
+    return new Promise(function(resolve, reject) {
+      return resolve(setTimeout(function() {
+        console.log(1)
+      }, 1000));
+    })
+  });
+  new  Promise(function(resolve, reject) {
+    return resolve(console.log(2));
+  });
+  console.log(3);
+  var promise = new Promise(function(resolve, reject) {
+    return reject(console.log(4));
+  });
+  setTimeout(function() {
+    console.log(5);
+  },0)
+  function main() {
+    console.log(6);
+  }
+  promise.then(function(success) {
+    console.log(7);
+  }, function (error) {
+    console.log(8);
+  });
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>
