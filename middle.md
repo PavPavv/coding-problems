@@ -267,3 +267,81 @@ console.log(fib(9));  //  34
 </details>
 
 ---
+
+8. Find out if two numbers in the array have target sum. And find all **unique** combinations.
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ * f([2,3,5,1,6,7,4,8,10,100,4,300,24,1], 5) -> [[2,3], [1,4], [4,1]]
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  const nums = [2,3,5,1,6,7,4,8,10,100,4,300,24,1];
+  function getSumPairs(arr, target) {
+    const set = new Set();
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      set.add(arr[i]);
+    }
+    for (const num of set) {
+      const secondNum = target - num;
+      if (set.has(secondNum)) {
+        if (secondNum > num) {
+          result.push([num, secondNum]);
+        }
+      }
+    }
+    return result;
+  }
+  console.log(getSumPairs(nums, 5));
+</script>
+<div>Complexity:</div>
+<p><strong>O(N+K)??</strong></p>
+</pre>
+</details>
+
+---
+
+8. Find out max index of two char in single string.
+
+```javascript
+/**
+ * @param {string} str
+ * @param {string} a
+ * @param {string} b
+ * @return {number}
+ * f('abbaao', 'a', 'b') -> 4
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function getLatestCharIdx(str, a, b) {
+    if (str) {
+      if (!a && !b) return -1;
+      return Math.max(
+        a ? str.lastIndexOf(a) : -1,
+        b ? str.lastIndexOf(b) : -1
+      );
+    }
+    return -1;
+  }
+  console.log(getLatestCharIdx('google', 'g', 'o'));  //  3
+  console.log(getLatestCharIdx('aba', 'a', 'b'));  //  2
+  console.log(getLatestCharIdx('', 'g', 'o'));   //  -1
+  console.log(getLatestCharIdx('google', 'x', 'o')); //  2
+  console.log(getLatestCharIdx('aba', '', '')); //  -1
+  console.log(getLatestCharIdx('aba', '', 'b')) //  1
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---

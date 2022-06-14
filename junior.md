@@ -1,5 +1,7 @@
 # Junior level coding tasks
 
+---
+
 1. Find first **left** target in the array.
 ```javascript
 /**
@@ -215,7 +217,9 @@
 </pre>
 </details>
 
-8. Transform number into number consisting of square of each number. Number must be more than 9;
+---
+
+8. Transform number into number consisting of square of each number. Number must be more than 9.
 ```javascript
 /**
  * @param {number} num
@@ -242,7 +246,9 @@ console.log(squareDigits(25));
 </pre>
 </details>
 
-9. Replace character from the string
+---
+
+9. Replace character from the string.
 ```javascript
 /**
  * @param {string} str
@@ -264,6 +270,8 @@ console.log(removeChar('Hell#o!'));
 <p><strong>O(n)</strong></p>
 </pre>
 </details>
+
+---
 
 10. Find dublicated sequence
 ```javascript
@@ -297,7 +305,9 @@ console.log(removeChar('Hell#o!'));
 </pre>
 </details>
 
-10. Name proper sequence of the event loop calls
+---
+
+11. Name proper sequence of the event loop calls.
 
 <details>
 <summary>Solution 1</summary>
@@ -333,3 +343,69 @@ console.log(removeChar('Hell#o!'));
 <p><strong></strong></p>
 </pre>
 </details>
+
+---
+
+12. Find half-interval with numbers which are equal target value.
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ * f([0,0,0,0,1,2,3,4,5,6,0,], 1, 5) -> 3
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  const nums = [0,0,0,0,1,2,3,4,5,6,0,];
+  function countZeros(arr, l, r) {
+    let counter = 0;
+    for (let i = l; i < r; i++) {
+      if (arr[i] === 0) counter++;
+    }
+    return counter;
+  }
+  console.log(countZeros(nums, 1,5));
+</script>
+<div>Complexity:</div>
+<p><strong>O(N*M)</strong></p>
+</pre>
+</details>
+
+---
+
+13. Find out if two numbers in the array have target sum.
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ * f([2,3,5,1,6,7,8,10,100], 5) -> true
+ * f([2,3,5,1,6,7,8,10,100], 1000) -> false
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  const nums = [2,3,5,1,6,7,8,10,100];
+  function isHaveSum(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[i] + arr[j] === target) return true;
+      }
+    }
+    return false;
+  }
+  console.log(isHaveSum(nums, 5));
+  console.log(isHaveSum(nums, 1000));
+</script>
+<div>Complexity:</div>
+<p><strong>O(N^2)</strong></p>
+</pre>
+</details>
+
+---
