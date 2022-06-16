@@ -275,6 +275,7 @@ console.log(fib(9));  //  34
  * @param {number[]} nums
  * @return {number[]}
  * f([2,3,5,1,6,7,4,8,10,100,4,300,24,1], 5) -> [[2,3], [1,4], [4,1]]
+*/
 ```
 
 <details>
@@ -316,6 +317,7 @@ console.log(fib(9));  //  34
  * @param {string} b
  * @return {number}
  * f('abbaao', 'a', 'b') -> 4
+*/
 ```
 
 <details>
@@ -345,3 +347,107 @@ console.log(fib(9));  //  34
 </details>
 
 ---
+
+9. Compare two strings lexicographically
+
+```javascript
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {string}
+ * f('banana', 'avocado') -> 'avocado'
+*/
+```
+
+<details>
+<summary>Solution 1 (long, custom)</summary>
+<pre>
+<script>
+  function compare(a, b) {
+    if (typeof a !== 'string' || typeof b !== 'string') {
+      return 'Type error';
+    }
+    if (!a && !b) return 'The strings are empty';
+    if (!a) return b;
+    if (!b) return a;
+    const loweredA = a.toLowerCase();
+    const loweredB = b.toLowerCase();
+    for (let i = 0; i < loweredA.length; i++) {
+      const charCodeA = loweredA[i] ? loweredA[i].charCodeAt() : -1;
+      const charCodeB = loweredB[i] ? loweredB[i].charCodeAt() : -1;
+        if (charCodeA < charCodeB) return a;
+      if (charCodeA > charCodeB) return b;
+      if (charCodeA === charCodeB) {
+        if (loweredA[loweredA.length - 1] === loweredA[i]) {
+          return a;
+        } else {
+          continue;
+        };
+      }
+    }
+  };
+  console.log(compare(-1, 30));
+  console.log(compare('', ''));
+  console.log(compare('', 'a'));
+  console.log(compare('a', ''));
+  console.log(compare('banana', 'avocado'));
+  console.log(compare('Banana', 'Avocado'));
+  console.log(compare('banana', 'Avocado'));
+  console.log(compare('ooooo', 'oo'));
+  console.log(compare('oo', 'oooooo'));
+  console.log(compare('oz', 'oooooo'));
+  console.log(compare('oooooo', 'oooooZ'));
+</script>
+<div>Complexity:</div>
+<p><strong>O(N)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2 (short, native)</summary>
+<pre>
+<script>
+function compare(str1, str2) {
+  const result = str1.toString().localeCompare(str2.toString());
+  return result ? str2 : str1;
+}
+console.log(compare(-1, 30));
+console.log(compare('', ''));
+console.log(compare('', 'a'));
+console.log(compare('a', ''));
+console.log(compare('banana', 'avocado'));
+console.log(compare('Banana', 'Avocado'));
+console.log(compare('banana', 'Avocado'));
+console.log(compare('ooooo', 'oo'));
+console.log(compare('oo', 'oooooo'));
+console.log(compare('oz', 'oooooo'));
+console.log(compare('oooooo', 'oooooZ'));
+</script>
+<div>Complexity:</div>
+<p><strong>??</strong></p>
+</pre>
+</details>
+
+---
+
+10. Add new native method to the strings.
+
+```javascript
+/**
+ * 'Hello'.repeating(3) -> 'Hello Hello Hello'
+*/
+```
+
+<details>
+<summary>Solution 2 (short, native)</summary>
+<pre>
+<script>
+  String.prototype.repeating = function(num) {
+    return new Array(num).fill(this).join(" ");
+  };
+  'Hello'.repeating(3);
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>

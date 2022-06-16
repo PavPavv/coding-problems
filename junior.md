@@ -385,6 +385,7 @@ console.log(removeChar('Hell#o!'));
  * @return {boolean}
  * f([2,3,5,1,6,7,8,10,100], 5) -> true
  * f([2,3,5,1,6,7,8,10,100], 1000) -> false
+*/
 ```
 
 <details>
@@ -405,6 +406,37 @@ console.log(removeChar('Hell#o!'));
 </script>
 <div>Complexity:</div>
 <p><strong>O(N^2)</strong></p>
+</pre>
+</details>
+
+---
+
+14. Convert all the params into a string with separator.
+
+```javascript
+/**
+* @param {string}
+* @param {number}
+* @param {number}
+* ...
+* @return {string}
+*...
+* func('!', 4, -10, 34, 0) -> '!4!-10!34!0'
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function withSeparator(...rest) {
+    const [separator, ...values] = rest;
+    return separator + values.join(separator);
+  };
+  console.log(withSeparator('!', 4, -10, 34, 0));
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
 </pre>
 </details>
 
