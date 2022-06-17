@@ -435,7 +435,87 @@ console.log(removeChar('Hell#o!'));
   };
   console.log(withSeparator('!', 4, -10, 34, 0));
 </script>
-<div>Complexity:</div>
+<div>Complexity: O(1)</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
+
+---
+
+15. Find out if object is empty.
+
+```javascript
+/**
+* @param {object}
+* @return {boolean}
+*...
+* func({}) -> true
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function isEmptyObj(obj) {
+    return Object.keys(obj).length > 0 ? false : true;
+  }
+  console.log(isEmptyObj({}));
+  console.log(isEmptyObj({a: 'test'}));
+</script>
+<div>Complexity: O(N)</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+  function isEmptyObj(obj) {
+    for (const key in obj) {
+      return false;
+    }
+    return true;
+  }
+  console.log(isEmptyObj({}));
+  console.log(isEmptyObj({a: 'test'}));
+</script>
+<div>Complexity: O(1)</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
+15. Find max value in an array
+
+```javascript
+/**
+* @param {number[]}
+* @return {number}
+*...
+* func([3,5,2,1,3,7,66,8,9,4,100,45]) -> 100
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function findMax(arr) {
+    let max = 0;
+    for (let i= 0; i < arr.length; i++) {
+      if (arr[i] > max) {
+        max = arr[i];
+      }
+    }
+    return max;
+  }
+  console.log(findMax([3,5,2,1,3,7,66,8,9,4,100,45]));
+</script>
+<div>Complexity: O(N)</div>
 <p><strong></strong></p>
 </pre>
 </details>

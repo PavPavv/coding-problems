@@ -451,3 +451,63 @@ console.log(compare('oooooo', 'oooooZ'));
 <p><strong></strong></p>
 </pre>
 </details>
+
+---
+
+11. Find "black ship" in an array.
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {number}
+ * f([2,4,6,8,9,10,12]) -> 9
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function findBlackShip(arr) {
+    let oddCounter = 0;
+    let evenCounter = 0;
+    let lastOdd = 0
+    let lastEven = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] % 2 === 0) {
+        evenCounter++;
+        lastEven = arr[i];
+      } else {
+        oddCounter++;
+        lastOdd = arr[i];
+      }
+    }
+    if (evenCounter + oddCounter > 3) {
+      if (oddCounter > 1) return lastEven;
+      else return lastOdd;
+    } else return -1;
+  };
+</script>
+<div>Complexity: O(N)</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+  function findBlackShip(arr) {
+    const binaryArr = arr.map(x => x % 2);
+    const bArrSum = binaryArr.reduce((a,b) => a+b);
+    const target = bArrSum > 1 ? 0 : 1;
+    return arr[binaryArr.indexOf(target)];
+  };
+  console.log(findBlackShip([2,4,6,8,9,10,12]))
+</script>
+<div>Complexity: O(N)</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
