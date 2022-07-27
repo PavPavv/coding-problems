@@ -83,7 +83,7 @@
   function findTwoMax(arr) {
     let max1 = Math.max(arr[0], arr[1]);
     let max2 = Math.min(arr[0], arr[1]);
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 2; i < arr.length; i++) {
       if (arr[i] > max1) {
         max2 = max1;
         max1 = arr[i];
@@ -96,7 +96,7 @@
   console.log(findTwoMax([10,-2,1,2,3,4,5])); //  [10,5]
 </script>
 <div>Complexity:</div>
-<p><strong>O(n)</strong></p>
+<p><strong>O(n - 2)</strong></p>
 </pre>
 </details>
 
@@ -157,7 +157,7 @@
 </details>
 
 <details>
-<summary>Solution 2</summary>
+<summary>Solution 2 (with IIFE)</summary>
 <pre>
 <script>
   const counter = (function () {
@@ -211,7 +211,7 @@
 
 ---
 
-6. Fibonacci with recursion
+6. Fibonacci
 
 ```javascript
 /**
@@ -221,7 +221,7 @@
 */
 ```
 <details>
-<summary>Solution 1</summary>
+<summary>Solution 1 (recursive)</summary>
 <pre>
 <script>
   function fib(num) {
@@ -235,19 +235,8 @@
 </pre>
 </details>
 
----
-
-7. Fibonacci without recursion
-
-```javascript
-/**
- * @param {number} num
- * @return {number}
- * f(9) -> 34
-*/
-```
 <details>
-<summary>Solution 1</summary>
+<summary>Solution 2 (without recursion)</summary>
 <pre>
 <script>
   function fib(num) {
@@ -268,7 +257,7 @@ console.log(fib(9));  //  34
 
 ---
 
-8. Find out if two numbers in the array have target sum. And find all **unique** combinations.
+8. Find out if two numbers in the array have target sum. All combinations must be **unique**.
 
 ```javascript
 /**
@@ -378,25 +367,36 @@ console.log(fib(9));  //  34
         if (charCodeA < charCodeB) return a;
       if (charCodeA > charCodeB) return b;
       if (charCodeA === charCodeB) {
-        if (loweredA[loweredA.length - 1] === loweredA[i]) {
-          return a;
+        if (loweredA.length > loweredB.length) {
+          if (loweredB[loweredB.length - 1] === loweredA[i]) {
+            return b;
+          } else {
+            continue;
+          };
+        } else if (loweredA.length < loweredB.length) {
+          if (loweredA[loweredA.length - 1] === loweredB[i]) {
+            return a;
+          } else {
+            continue;
+          };
         } else {
-          continue;
-        };
+          return a;
+        }
       }
     }
   };
-  console.log(compare(-1, 30));
-  console.log(compare('', ''));
-  console.log(compare('', 'a'));
-  console.log(compare('a', ''));
-  console.log(compare('banana', 'avocado'));
-  console.log(compare('Banana', 'Avocado'));
-  console.log(compare('banana', 'Avocado'));
-  console.log(compare('ooooo', 'oo'));
-  console.log(compare('oo', 'oooooo'));
-  console.log(compare('oz', 'oooooo'));
-  console.log(compare('oooooo', 'oooooZ'));
+  console.log(compare(-1, 30)); //  Type error
+  console.log(compare('', '')); // The strings are empty 
+  console.log(compare('', 'a'));  //  a
+  console.log(compare('a', ''));  //  a
+  console.log(compare('banana', 'avocado'));  //  avocado
+  console.log(compare('Banana', 'Avocado'));  //  Avocado
+  console.log(compare('banana', 'Avocado'));  //  Avocado
+  console.log(compare('ooooo', 'oo'));  //  oo
+  console.log(compare('oo', 'oooooo')); //  oo
+  console.log(compare('oz', 'oooooo')); //  oooooo
+  console.log(compare('oooooo', 'oooooZ')); //  oooooo
+  console.log(compare('ooo', 'ooo')); //  ooo
 </script>
 <div>Complexity:</div>
 <p><strong>O(N)</strong></p>
@@ -411,17 +411,18 @@ function compare(str1, str2) {
   const result = str1.toString().localeCompare(str2.toString());
   return result ? str2 : str1;
 }
-console.log(compare(-1, 30));
-console.log(compare('', ''));
-console.log(compare('', 'a'));
-console.log(compare('a', ''));
-console.log(compare('banana', 'avocado'));
-console.log(compare('Banana', 'Avocado'));
-console.log(compare('banana', 'Avocado'));
-console.log(compare('ooooo', 'oo'));
-console.log(compare('oo', 'oooooo'));
-console.log(compare('oz', 'oooooo'));
-console.log(compare('oooooo', 'oooooZ'));
+console.log(compare(-1, 30)); //  30
+console.log(compare('', '')); //  ''
+console.log(compare('', 'a'));  //  a
+console.log(compare('a', ''));  //  ''
+console.log(compare('banana', 'avocado'));  //  avocado
+console.log(compare('Banana', 'Avocado'));  //  avocado
+console.log(compare('banana', 'Avocado'));  //  avocado
+console.log(compare('ooooo', 'oo'));  //  oo
+console.log(compare('oo', 'oooooo')); //  oooooo
+console.log(compare('oz', 'oooooo')); //  oooooo
+console.log(compare('oooooo', 'oooooZ')); //oooooZ
+console.log(compare('ooo', 'ooo')); //ooo
 </script>
 <div>Complexity:</div>
 <p><strong>??</strong></p>
@@ -488,8 +489,8 @@ console.log(compare('oooooo', 'oooooZ'));
     } else return -1;
   };
 </script>
-<div>Complexity: O(N)</div>
-<p><strong></strong></p>
+<div>Complexity:</div>
+<p><strong>O(N)</strong></p>
 </pre>
 </details>
 
@@ -505,8 +506,8 @@ console.log(compare('oooooo', 'oooooZ'));
   };
   console.log(findBlackShip([2,4,6,8,9,10,12]))
 </script>
-<div>Complexity: O(N)</div>
-<p><strong></strong></p>
+<div>Complexity: </div>
+<p><strong>O(N)</strong></p>
 </pre>
 </details>
 

@@ -219,7 +219,7 @@
 
 ---
 
-8. Transform number into number consisting of square of each number. Number must be more than 9.
+8. Transform number into number consisting of square of each number. Input number must be more than 9.
 ```javascript
 /**
  * @param {number} num
@@ -261,10 +261,11 @@ console.log(squareDigits(25));
 <summary>Solution</summary>
 <pre>
 <script>
-const removeChar = (str) => {
-  return str.replace(/#/gi,'');
+const removeChar = (str, target) => {
+  const targetRegex = new RegExp(target, 'gi');
+  return str.replace(targetRegex,'');
 };
-console.log(removeChar('Hell#o!'));
+console.log(removeChar('Hell#o!', '#'));
 </script>
 <div>Complexity:</div>
 <p><strong>O(n)</strong></p>
@@ -346,11 +347,14 @@ console.log(removeChar('Hell#o!'));
 
 ---
 
-12. Find half-interval with numbers which are equal target value.
+12. Find a number of coincidences in the array from half-interval for a number param.
 
 ```javascript
 /**
- * @param {number[]} nums
+ * @param {number[]} arr
+ * @param {number} l
+ * @param {number} r
+ * @param {number} target
  * @return {number}
  * f([0,0,0,0,1,2,3,4,5,6,0,], 1, 5) -> 3
 */
@@ -360,15 +364,15 @@ console.log(removeChar('Hell#o!'));
 <summary>Solution 1</summary>
 <pre>
 <script>
-  const nums = [0,0,0,0,1,2,3,4,5,6,0,];
-  function countZeros(arr, l, r) {
+  const nums = [0,0,0,0,1,2,3,4,5,6,0,0];
+  function halfIntervalTargetCounter(arr, l ,r, target) {
     let counter = 0;
-    for (let i = l; i < r; i++) {
-      if (arr[i] === 0) counter++;
+    for (let i = l; i < r; i ++) {
+      if (arr[i] === target) counter++;
     }
     return counter;
   }
-  console.log(countZeros(nums, 1,5));
+  console.log(halfIntervalTargetCounter(nums, 1,5));
 </script>
 <div>Complexity:</div>
 <p><strong>O(N*M)</strong></p>
@@ -435,8 +439,8 @@ console.log(removeChar('Hell#o!'));
   };
   console.log(withSeparator('!', 4, -10, 34, 0));
 </script>
-<div>Complexity: O(1)</div>
-<p><strong></strong></p>
+<div>Complexity: </div>
+<p><strong>O(1)</strong></p>
 </pre>
 </details>
 
@@ -465,8 +469,8 @@ console.log(removeChar('Hell#o!'));
   console.log(isEmptyObj({}));
   console.log(isEmptyObj({a: 'test'}));
 </script>
-<div>Complexity: O(N)</div>
-<p><strong></strong></p>
+<div>Complexity: </div>
+<p><strong>O(N)</strong></p>
 </pre>
 </details>
 
@@ -483,8 +487,8 @@ console.log(removeChar('Hell#o!'));
   console.log(isEmptyObj({}));
   console.log(isEmptyObj({a: 'test'}));
 </script>
-<div>Complexity: O(1)</div>
-<p><strong></strong></p>
+<div>Complexity: </div>
+<p><strong>O(1)</strong></p>
 </pre>
 </details>
 
@@ -515,8 +519,8 @@ console.log(removeChar('Hell#o!'));
   }
   console.log(findMax([3,5,2,1,3,7,66,8,9,4,100,45]));
 </script>
-<div>Complexity: O(N)</div>
-<p><strong></strong></p>
+<div>Complexity: </div>
+<p><strong>O(N)</strong></p>
 </pre>
 </details>
 
