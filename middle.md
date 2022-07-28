@@ -191,18 +191,19 @@
 <summary>Solution 1</summary>
 <pre>
 <script>
-  function numberifyStr(str) {
+  function charCount(str) {
+    const spacelessStr = str.replaceAll(/\s/g, '');
     const obj = {};
     let result = '';
-    for (let i = 0; i < str.length; i++) {
-      obj[str[i]] = obj[str[i]] ? obj[str[i]] + 1 : 1;
+    for (let i = 0; i < spacelessStr.length; i++ ) {
+      obj[spacelessStr[i]] = obj[spacelessStr[i]] ? obj[spacelessStr[i]] + 1 : 1;
     }
-    for (char in obj) {
+    for (const char in obj) {
       result += `${char}${obj[char]}`;
     }
     return result;
-  };
-  console.log(numberifyStr('AABBBCCCCDDDDDE'));  //  A2B3C4D5E1
+  }
+  console.log(charCount('AABBBCCCCDDDDDE'));
 </script>
 <div>Complexity:</div>
 <p><strong>O(n)</strong></p>
@@ -508,6 +509,46 @@ console.log(compare('ooo', 'ooo')); //ooo
 </script>
 <div>Complexity: </div>
 <p><strong>O(N)</strong></p>
+</pre>
+</details>
+
+---
+
+12. Find list of shortest strings in the array
+
+```javascript
+/**
+* @param {string[]}
+* @return {string}
+*...
+* func(['ab', 'a', 'abc']) -> a
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  const wordsArr = ['mu', 'kryliaSovetov', 'zenit', 'spartak', 'sochi', 'mc'];
+  function getShortestStrFromArr(arr) {
+    let min = arr[0];
+    const result = [];
+    for (const word of arr) {
+      if (word.length < min.length) {
+        min = word;
+      }
+    }
+    for (const word of arr) {
+      if (word.length === min.length) {
+        result.push(word);
+      }
+    }
+    return result.length > 0 ? result : min;
+  }
+  console.log(getShortestStrFromArr(wordsArr)); //  ['mu', 'mc']
+</script>
+<div>Complexity: </div>
+<p><strong>O(N-1)</strong></p>
 </pre>
 </details>
 

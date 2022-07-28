@@ -493,7 +493,7 @@ console.log(removeChar('Hell#o!', '#'));
 </details>
 
 ---
-15. Find max value in an array
+15. Find max value in the array
 
 ```javascript
 /**
@@ -521,6 +521,40 @@ console.log(removeChar('Hell#o!', '#'));
 </script>
 <div>Complexity: </div>
 <p><strong>O(N)</strong></p>
+</pre>
+</details>
+
+---
+
+16. Find shortest string in the array
+
+```javascript
+/**
+* @param {string[]}
+* @return {string}
+*...
+* func(['ab', 'a', 'abc']) -> a
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  const wordsArr = ['kryliaSovetov', 'zenit', 'spartak'];
+  function getShortestStrFromArr(arr) {
+    let min = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i].length < min.length) {
+        min = arr[i];
+      }
+    }
+    return min;
+  }
+  console.log(getShortestStrFromArr(wordsArr)); //  zenit
+</script>
+<div>Complexity: </div>
+<p><strong>O(N-1)</strong></p>
 </pre>
 </details>
 
