@@ -258,7 +258,7 @@ console.log(fib(9));  //  34
 
 ---
 
-8. Find out if two numbers in the array have target sum. All combinations must be **unique**.
+7. Find out if two numbers in the array have target sum. All combinations must be **unique**.
 
 ```javascript
 /**
@@ -333,6 +333,36 @@ console.log(fib(9));  //  34
 </script>
 <div>Complexity:</div>
 <p><strong></strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+  function getLatestCharIdx(s, a, b) {
+    if (typeof s !== 'string') return -1;
+    if (s) {
+      if (a && b) {
+        let a_result = 0;
+        let b_result = 0;
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === a) a_result = i;
+          if (s[i] === b) b_result = i;
+        }
+        return a_result > b_result ? a_result : b_result;
+      }
+    }
+    return -1;
+  };
+  console.log(getLatestCharIdx('aba', 'a', 'b'));  //  2
+  console.log(getLatestCharIdx('', 'g', 'o'));   //  -1
+  console.log(getLatestCharIdx('google', 'x', 'o')); //  2
+  console.log(getLatestCharIdx('aba', '', '')); //  -1
+  console.log(getLatestCharIdx('aba', '', 'b')) //  1
+</script>
+<div>Complexity: </div>
+<p><strong>O(n)</strong></p>
 </pre>
 </details>
 
@@ -553,3 +583,41 @@ console.log(compare('ooo', 'ooo')); //ooo
 </details>
 
 ---
+
+13. Create expression, like: five(plus(seven(minus(three())))) which returns 9
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+function plus(x) {
+  return function(y) {
+    return y + x;
+  }
+}
+function minus(x) {
+  return function(y) {
+    return y - x;
+  }
+}
+//  key of the algorithm
+function expression(number, operation) {
+  if (!operation) return number;
+  return operation(number);
+}
+//
+function three(operation) {
+  return expression(3, operation);
+}
+function five(operation) {
+  return expression(5, operation);
+}
+function seven(operation) {
+  return expression(7, operation);
+}
+console.log(five(plus(seven(minus(three())))));
+</script>
+<div>Complexity: </div>
+<p><strong></strong></p>
+</pre>
+</details>
