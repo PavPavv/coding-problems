@@ -103,3 +103,67 @@ function verify(s) {
 <p><strong></strong></p>
 </pre>
 </details>
+
+---
+
+3. Find longest common preffix in the array of strings
+
+```javascript
+/**
+* @param {string[]} strArr
+* @return {string}
+*
+* func(["flower", "flow", "flight"])) -> 'fl'
+* func(longestComPrfx([])) -> ''
+* func(longestComPrfx(["flower"])) -> ''
+* func(longestComPrfx(["", "", "", ""])) -> ''
+* func(longestComPrfx(["flower", {}, null])) -> ''
+* func([[], {}, "flower",  null])) -> ''
+*/
+```
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+function longestComPrfx(strArr) {
+  if (strArr.length < 2) return '';
+  let commonPrefix = '';
+  let candidateChar = '';
+  let firstWord;
+  //
+  for (const word of strArr) {
+    if (word && typeof word === 'string') {
+      firstWord = word.toLowerCase();
+      break;
+    }
+  }
+  if (!firstWord) return '';
+  //
+  for (let i = 0; i < firstWord.length; i++) {
+    candidateChar = firstWord[i] || '';  
+    for (const word of strArr) {
+      if (!word || typeof word !== 'string') continue;
+      else {
+        const loweredWord = word.toLowerCase();
+        if (candidateChar !== loweredWord[i]) {
+          return commonPrefix;
+        }
+      }
+    }
+    commonPrefix += candidateChar;
+  }
+  //
+  if  (commonPrefix === firstWord) commonPrefix = '';
+  return commonPrefix;
+}
+console.log(longestComPrfx(["flower", "flow", "flight"]));
+console.log(longestComPrfx([]));
+console.log(longestComPrfx(["flower"]));
+console.log(longestComPrfx(["", "", "", ""]));
+console.log(longestComPrfx(["flower", {}, null]));
+console.log(longestComPrfx([[], {}, "flower",  null]));
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>
