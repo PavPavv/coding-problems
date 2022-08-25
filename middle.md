@@ -621,3 +621,41 @@ console.log(five(plus(seven(minus(three())))));
 <p><strong></strong></p>
 </pre>
 </details>
+
+---
+
+14. Write a function which will return accumulated amount of seconds since previous tick
+
+```javascript
+/**
+* @param {number}
+* @return {void}
+*...
+* func(1) -> 1...,2......,3.........,4............,5...............,6..................,7.....................,8........................, ...10...
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function periodOutput(interval) {
+    let counter = interval;
+    const tick = 1000 * counter;
+    setTimeout(() => {
+      if (counter <= 10) {
+        console.log(counter);
+        counter++;
+        periodOutput(counter);
+      }
+      return;
+    }, tick);
+  }
+  console.log(periodOutput(1));
+</script>
+<div>Complexity: </div>
+<p><strong>O(1)</strong></p>
+</pre>
+</details>
+
+---

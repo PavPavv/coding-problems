@@ -559,3 +559,37 @@ console.log(removeChar('Hell#o!', '#'));
 </details>
 
 ---
+
+17. Write a function which will return amount of second passed by since its start 'till 10sec
+
+```javascript
+/**
+* @param {number}
+* @return {void}
+*...
+* func(1) -> 1...,2...,3...,4...,5...,6...,7...,8...,9...,10....
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  function periodOutput(interval) {
+    let counter = 1;
+    setInterval(() => {
+      if (counter <= 10) {
+        console.log(counter);
+        counter++;
+      }
+      return;
+    }, 1000 * interval);
+  }
+  console.log(periodOutput(1));
+</script>
+<div>Complexity: </div>
+<p><strong>O(1)</strong></p>
+</pre>
+</details>
+
+---
