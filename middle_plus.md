@@ -167,3 +167,40 @@ console.log(longestComPrfx([[], {}, "flower",  null]));
 <p><strong></strong></p>
 </pre>
 </details>
+
+3. Simplest binary search
+
+```javascript
+/**
+* @param {number[]} a
+* @param {number} x
+* @return {boolean}
+*...
+* func([1,2,3,4,5], 4) -> 3
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+const arr = [1,2,3,4,5];
+function bSearch(a, x) {
+  const N = a.length;
+  let l = 0;
+  let r = N - 1;
+  while (l < r) {
+    let m = Math.floor((l + r) / 2);
+    if (a[m] < x) l = m + 1;
+    else r = m;
+  }
+  return l;
+}
+console.log(bSearch(arr, 4));
+</script>
+<div>Complexity:</div>
+<p><strong>log(N)</strong></p>
+</pre>
+</details>
+
+---

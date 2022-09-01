@@ -111,8 +111,9 @@
  * f([10,-2,1,2,3,4,5]) -> 2
 */
 ```
+
 <details>
-<summary>Solution</summary>
+<summary>Solution 1</summary>
 <pre>
 <script>
   function findMinEven(arr) {
@@ -127,6 +128,26 @@
     return result;
   }
   console.log(findMinEven([10,-2,1,2,3,4,5])) //  2
+</script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+function findMinEven(array) {
+  const sorted = array.sort((a,b) => a-b);
+  for (let i = 0; i < sorted.length; i++) {
+    if (sorted[i] % 2 === 0) {
+      return sorted[i];
+    }
+  }
+  return 0;
+}
+console.log(findMinEven([5,8,6,3,7,56,100,101,4,20])); //  4
 </script>
 <div>Complexity:</div>
 <p><strong>O(n)</strong></p>
@@ -290,6 +311,17 @@ console.log(fib(9));  //  34
     return result;
   }
   console.log(getSumPairs(nums, 5));
+</script>
+<div>Complexity:</div>
+<p><strong>O(N+K)??</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+
 </script>
 <div>Complexity:</div>
 <p><strong>O(N+K)??</strong></p>
