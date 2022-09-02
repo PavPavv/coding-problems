@@ -168,7 +168,7 @@ console.log(longestComPrfx([[], {}, "flower",  null]));
 </pre>
 </details>
 
-3. Simplest binary search
+3. Simplest left binary search
 
 ```javascript
 /**
@@ -185,7 +185,7 @@ console.log(longestComPrfx([[], {}, "flower",  null]));
 <pre>
 <script>
 const arr = [1,2,3,4,5];
-function bSearch(a, x) {
+function lbSearch(a, x) {
   const N = a.length;
   let l = 0;
   let r = N - 1;
@@ -196,7 +196,33 @@ function bSearch(a, x) {
   }
   return l;
 }
-console.log(bSearch(arr, 4));
+console.log(lbSearch(arr, 4));
+</script>
+<div>Complexity:</div>
+<p><strong>log(N)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+function lbSearch(a, x) {
+  const N = a.length;
+  let l = 0;
+  let r = N - 1;
+  if (a[l] > x || a[r] < x) return - 1;
+  while(true) {
+    if (a[l] === x) return l;
+    if (a[r] === x) return r;
+    if (r - l <= 1) return -1;
+    const m = Math.floor((l + r) / 2);
+    if (a[m] < x) l = m + 1;
+    else if (a[m] > x) r = m - 1
+    else return m;
+  }
+}
+console.log(lbSearch([1,2,3,4,5,6,7,8,9], 4)); //  3
 </script>
 <div>Complexity:</div>
 <p><strong>log(N)</strong></p>
