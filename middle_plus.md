@@ -230,3 +230,37 @@ console.log(lbSearch([1,2,3,4,5,6,7,8,9], 4)); //  3
 </details>
 
 ---
+
+3. Write your own parseInt
+
+```javascript
+/**
+  @param {string} str
+  @return {number}
+  func('123') -> 123
+*/
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+function myParseInt(str) {
+  let int = 0;
+  for (let i = 0; i < str.length; i++) {
+    const asciiCode = str[i].charCodeAt();
+    const digit = String.fromCharCode(asciiCode);
+    int += digit;
+  }
+  return int * 10 / 10;
+}
+console.log(myParseInt('123')); //  123
+console.log(myParseInt('20458')); //  20458
+</script>
+<div>Complexity:</div>
+<p><strong>log(N)</strong></p>
+</pre>
+</details>
+
+---
+
