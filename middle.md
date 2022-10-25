@@ -279,22 +279,48 @@ console.log(fib(9));  //  34
 
 ---
 
-7. Find out if two numbers in the array have target sum. All combinations must be **unique**.
+7. Find out if a sum of two numbers in an array equals target number. All combinations must be **unique**.
 
 ```javascript
 /**
- * @param {number[]} nums
- * @return {number[]}
- * f([2,3,5,1,6,7,4,8,10,100,4,300,24,1], 5) -> [[2,3], [1,4], [4,1]]
-*/
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number[]} 
+ * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
+ */
 ```
 
 <details>
 <summary>Solution 1</summary>
 <pre>
 <script>
+  function findSum(arr, target) {
+    const obj = {};
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      obj[arr[i]] = i;
+    }
+    for (const num in obj) {
+      const secondNum = target - num;
+      if (obj[secondNum] && secondNum > num) {
+        const pair = [+num, +secondNum];
+        result.push(pair);
+      }
+    }
+    return result;
+  }
+</script>
+<div>Complexity:</div>
+<p><strong>O(N+K) (algoritm speed: O(N) + memory: O(K))</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
   const nums = [2,3,5,1,6,7,4,8,10,100,4,300,24,1];
-  function getSumPairs(arr, target) {
+  function findSum(arr, target) {
     const set = new Set();
     const result = [];
     for (let i = 0; i < arr.length; i++) {
@@ -310,21 +336,32 @@ console.log(fib(9));  //  34
     }
     return result;
   }
-  console.log(getSumPairs(nums, 5));
+  console.log(findSum(nums, 5));
 </script>
 <div>Complexity:</div>
-<p><strong>O(N+K)??</strong></p>
+<p><strong>O(N+K) (algoritm speed: O(N) + memory: O(K))</strong></p>
 </pre>
 </details>
 
 <details>
-<summary>Solution 2</summary>
+<summary>Solution 3</summary>
 <pre>
 <script>
-
+function findSum(arr, target) {
+  const set = new Set();
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    const secondNum = target - arr[i];
+    if (set.has(secondNum)) {
+      result.push([arr[i], secondNum]);
+    }
+    set.add(arr[i]);
+  }
+  return result;
+}
 </script>
 <div>Complexity:</div>
-<p><strong>O(N+K)??</strong></p>
+<p><strong>O(N+K) (algoritm speed: O(N) + memory: O(K))</strong></p>
 </pre>
 </details>
 
@@ -691,3 +728,28 @@ console.log(five(plus(seven(minus(three())))));
 </details>
 
 ---
+
+<!-- 15. Write a function which will return arrays of pairs of numbers if its sum equals target number or empty arrays conversely.
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number[]} 
+ * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
+ */
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+function findSum(arr, target) {
+
+}
+</script>
+<div>Complexity: </div>
+<p><strong></strong></p>
+</pre>
+</details> -->
+

@@ -264,3 +264,147 @@ console.log(myParseInt('20458')); //  20458
 
 ---
 
+4. Find out if a sum of two numbers in a **sorted** array equals target number. All combinations must be **unique**.
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number[]} 
+ * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
+ */
+```
+
+<details>
+<summary>Solution 1 (with binary search)</summary>
+<pre>
+<script>
+  function findSum(arr, target) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      const secondNum = target - arr[i];
+      let l = i + 1;
+      let r = arr.length - 1;
+      while (l <= r) {
+        let m = Math.ceil(l + (r - l) / 2);
+        if (arr[m] === secondNum) {
+          const pair = [arr[i], arr[m]];
+          result.push(pair);
+        }
+        if (secondNum < arr[m]) {
+          r = m - 1;
+        } else {
+          l = m + 1;
+        }
+      }
+    }
+    return result;
+  }
+</script>
+<div>Complexity:</div>
+<p><strong>log(N)</strong></p>
+</pre>
+</details>
+
+---
+
+5. Write a function which will return arrays of number tuples consisting of two number which sum is equal to target. Or closest result.
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number[]} 
+ * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
+ */
+```
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+  function findSum(arr, target) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      let l = 0;
+      let r = arr.length - 1;
+      let pair = [arr[l], arr[r]];
+      while (l < r) {
+        const sum = arr[l] + arr[r];
+        if (sum === target) {
+          pair = [arr[l], arr[r]];
+          return pair;
+        }
+        if (sum < target) {
+          l++;  
+        } else {
+          r--;
+        }
+      }
+    }
+    return result;
+  }
+</script>
+<div>Complexity:</div>
+<p><strong>log(N)</strong></p>
+</pre>
+</details>
+
+---
+
+6. Write a function which splits text into a small messages. 1 sms must be smaller than 140 characters and should end with ' k/n' suffix, where n - the whole amount of messages and k - current number of message. No punctuation and symbols except latin letter and spaces are allowed. sms can't be divided in the middle of a word. No words wrapping.
+
+```javascript
+/***
+ * @param {string} text
+ * @return {string[]}
+ * func('some super... long string') -> ['message 1/12', 'been 2/12', 'sent 2/12', ..., 'end 12/12']
+ * /
+```
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+  const longText = `
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium, augue in iaculis semper, magna sem gravida odio, ut rhoncus lacus nulla a justo. Fusce mi elit, laoreet pulvinar est eu, pellentesque posuere orci. Mauris vehicula feugiat tellus, eget bibendum nibh iaculis non. Mauris condimentum vulputate felis non dictum. Morbi quis eros nec lacus sollicitudin pharetra ac ac turpis. Ut scelerisque leo augue, a ullamcorper velit porttitor ut. Phasellus hendrerit dui ipsum, non rhoncus arcu lobortis ut. Aliquam fringilla et diam sed finibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla facilisi. Pellentesque feugiat ornare ligula, et bibendum tellus. In hac habitasse platea dictumst. Fusce a urna suscipit neque luctus faucibus sed a velit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam ex ipsum, luctus non nunc vel, porta tincidunt quam. Proin eu ullamcorper eros. Morbi laoreet tellus in posuere iaculis. Nam molestie et purus eget efficitur. Duis aliquam purus in eros volutpat lacinia. Mauris vulputate quis sem at elementum. Fusce dictum lectus id lectus iaculis, eu commodo sem tristique. Aenean consectetur auctor sem vitae iaculis. Cras mollis libero sit amet congue vulputate. Ut tempor tellus sed arcu vehicula, non interdum massa condimentum. Donec ultricies, libero hendrerit sollicitudin gravida, tortor nunc vehicula est, eu placerat ex nisl ultrices neque. Morbi in auctor nunc, pharetra posuere ante. Curabitur ac gravida urna. Curabitur aliquam pellentesque iaculis. Etiam molestie, quam id pretium iaculis, elit nisi tempor dui, eu efficitur lacus lacus at lacus. 
+  `;
+  const test = longText.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+  function splitText(text) {
+    let str = text;
+    const CHUNK_SIZE = 136;
+    const CHUNKS_LENGTH = Math.ceil(str.length / CHUNK_SIZE);
+    const result = [];
+    let counter = 0;
+    //  Go through a loop, until 'str' in not totally empty.
+    while (str !== '') {
+      let lastSpace = 0;
+      // not sure what 'i < str.length' means here
+      for (let i = 0; i < CHUNK_SIZE; i++) {
+        //  Check every space in the 136 string and assign the last one to the lastSpace
+        if (str[i] === ' ') {
+          lastSpace = i;
+        }
+      }
+      //  Increment global chunks counter
+      counter++;
+      /*
+        Insert into the final array slice of the 'str' of the range of 136,
+        but only if the word is full (border of slicing is always a space ('lastSpace'))
+      */
+      result.push(str.slice(0,lastSpace) + ` ${counter}/${CHUNKS_LENGTH}`);
+      //  Update the global text copy by removing used slice
+      str = str.slice(lastSpace);
+    }
+    //  test messages symbols length
+    result.map((sms, i) => {
+      console.log(`chunk_${i} = ${sms.length}`)
+    });
+    return result;
+  };
+
+</script>
+<div>Complexity:</div>
+<p><strong>log(N)</strong></p>
+</pre>
+</details>

@@ -372,7 +372,7 @@ console.log(removeChar('Hell#o!', '#'));
     }
     return counter;
   }
-  console.log(halfIntervalTargetCounter(nums, 1,5));
+  console.log(halfIntervalTargetCounter(nums, 1, 5, 0));
 </script>
 <div>Complexity:</div>
 <p><strong>O(N*M)</strong></p>
@@ -593,3 +593,60 @@ console.log(removeChar('Hell#o!', '#'));
 </details>
 
 ---
+
+18. Write a function which will return arrays of pairs of numbers if its sum equals target number or empty arrays conversely.
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number[]} 
+ * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
+ */
+```
+
+<details>
+<summary>Solution 1 (naive dirty solution)</summary>
+<pre>
+<script>
+function findSum(arr, target) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] + arr[j] === target) {
+        const pair = [arr[i], arr[j]];
+        result.push(pair);
+      }
+    }
+  }
+  return result;
+}
+</script>
+<div>Complexity: </div>
+<p><strong>O(N^2)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+function findSum(arr, target) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      //  more complex check
+      if (arr[i] + arr[j] === target && arr[i] !== arr[j] && arr[i] < arr[j]) {
+        const pair = [arr[i], arr[j]];
+        result.push(pair);
+      }
+    }
+  }
+  return result;
+}
+</script>
+<div>Complexity: </div>
+<p><strong>O(N^2) (algoritm speed: O(N^2) + memory: O(1))</strong></p>
+</pre>
+</details>
+
