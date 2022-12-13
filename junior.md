@@ -213,7 +213,7 @@
   console.log(findMiddle('testing'));
 </script>
 <div>Complexity:</div>
-<p><strong>O(n)</strong></p>
+<p><strong>O(1)</strong></p>
 </pre>
 </details>
 
