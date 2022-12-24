@@ -1,6 +1,50 @@
 # Pre-middle/middle level coding tasks
 
-1. Find most popular character in the string.
+1. Find anagram pairs
+
+```javascript
+/**
+ * @param {string[]} str
+ * @return {string[][]}
+ * f(['ana', 'nan', 'pie', 'cort', 'iep']) -> [['ana', 'nan], ['pie', 'iep']]
+*/
+```
+
+<details>
+<summary>Bad solution</summary>
+<pre>
+<script>
+
+</script>
+<div>Complexity:</div>
+<p><strong>O(n^2)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Good solution</summary>
+<pre>
+<script>
+  const data = ["cat", "tac", "pie", "round", "dnour", "act", "ipe", "pei"];
+  function getAnagrams(anagrams) {
+    const cache = {}
+    anagrams.forEach((item) => {
+      const key = item.split('').sort().join('')
+      if (key in cache) {
+        cache[key].push(item)
+      } else {
+        cache[key] = [item]
+      }
+    })
+  }
+  console.log(Object.values(cache));
+</script>
+<div>Complexity:</div>
+<p><strong>O(n^2)</strong></p>
+</pre>
+</details>
+
+2. Find most popular character in the string.
 
 ```javascript
 /**
@@ -9,6 +53,7 @@
  * f('ababa') -> 'a'
 */
 ```
+
 <details>
 <summary>Bad solution</summary>
 <pre>
@@ -67,7 +112,7 @@
 
 ---
 
-2. Find first and second max numbers in the array.
+3. Find first and second max numbers in the array.
 
 ```javascript
 /**
@@ -102,7 +147,7 @@
 
 ---
 
-3. Find min even number in the array.
+4. Find min even number in the array.
 
 ```javascript
 /**
@@ -156,7 +201,7 @@ console.log(findMinEven([5,8,6,3,7,56,100,101,4,20])); //  4
 
 ---
 
-4. Create simple counter which will store value.
+5. Create simple counter which will store value.
 
 <details>
 <summary>Solution 1</summary>
@@ -199,7 +244,7 @@ console.log(findMinEven([5,8,6,3,7,56,100,101,4,20])); //  4
 
 ---
 
-5. Create string with char counter.
+6. Create string with char counter.
 
 ```javascript
 /**
@@ -233,7 +278,7 @@ console.log(findMinEven([5,8,6,3,7,56,100,101,4,20])); //  4
 
 ---
 
-6. Fibonacci
+7. Fibonacci
 
 ```javascript
 /**
@@ -279,7 +324,7 @@ console.log(fib(9));  //  34
 
 ---
 
-7. Find out if a sum of two numbers in an array equals target number. All combinations must be **unique**.
+8. Find out if a sum of two numbers in an array equals target number. All combinations must be **unique**.
 
 ```javascript
 /**
@@ -367,7 +412,7 @@ function findSum(arr, target) {
 
 ---
 
-8. Find out max index of two char in single string.
+9. Find out max index of two char in single string.
 
 ```javascript
 /**
@@ -437,7 +482,7 @@ function findSum(arr, target) {
 
 ---
 
-9. Compare two strings lexicographically
+10. Compare two strings lexicographically
 
 ```javascript
 /**
@@ -531,7 +576,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-10. Add new native method to the strings.
+11. Add new native method to the strings.
 
 ```javascript
 /**
@@ -555,7 +600,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-11. Find "black ship" in an array.
+12. Find "black ship" in an array.
 
 ```javascript
 /**
@@ -613,7 +658,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-12. Find list of shortest strings in the array
+13. Find list of shortest strings in the array
 
 ```javascript
 /**
@@ -653,7 +698,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-13. Create expression, like: five(plus(seven(minus(three())))) which returns 9
+14. Create expression, like: five(plus(seven(minus(three())))) which returns 9
 
 <details>
 <summary>Solution 1</summary>
@@ -693,7 +738,7 @@ console.log(five(plus(seven(minus(three())))));
 
 ---
 
-14. Write a function which will return accumulated amount of seconds since previous tick
+15. Write a function which will return accumulated amount of seconds since previous tick
 
 ```javascript
 /**
@@ -728,6 +773,17 @@ console.log(five(plus(seven(minus(three())))));
 </details>
 
 ---
+
+<!-- Write custom bind -->
+<!-- 
+Function.prototype.myBind = function(fn, thisObj) {
+  return function() {
+    return fn.apply(thisObj, arguments);
+  }
+}
+ -->
+
+<!-- Write custom forEach -->
 
 <!-- 15. Write a function which will return arrays of pairs of numbers if its sum equals target number or empty arrays conversely.
 

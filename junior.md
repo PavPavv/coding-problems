@@ -3,6 +3,7 @@
 ---
 
 1. Find first **left** target in the array.
+
 ```javascript
 /**
  * @param {number} array
@@ -32,6 +33,7 @@
 ---
 
 2. Find first **right** target in the array.
+
 ```javascript
 /**
  * @param {number} array
@@ -62,6 +64,7 @@
 ---
 
 3. Find out is a string palindrome or not.
+
 ```javascript
 /**
  * @param {string} str
@@ -88,6 +91,7 @@
 ---
 
 4. Find elements of array having target's length.
+
 ```javascript
 /**
  * @param {string[]} arr
@@ -114,6 +118,7 @@
 ---
 
 5. Count amount of vowels in the word.
+
 ```javascript
 /**
  * @param {string} word
@@ -159,6 +164,7 @@
 ---
 
 6. Find sum of the range in between **two** numbers.
+
 ```javascript
 /**
  * @param {number} a
@@ -191,6 +197,7 @@
 ---
 
 7. Find middle character of the string if the string length is even or first char right after the middle if the string length is odd.
+
 ```javascript
 /**
  * @param {string} str
@@ -220,6 +227,7 @@
 ---
 
 8. Transform number into number consisting of square of each number. Input number must be more than 9.
+
 ```javascript
 /**
  * @param {number} num
@@ -249,6 +257,7 @@ console.log(squareDigits(25));
 ---
 
 9. Replace character from the string.
+
 ```javascript
 /**
  * @param {string} str
@@ -274,12 +283,13 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-10. Find dublicated sequence
+10. Find out if there is element in the array that is the same as the previous one
+
 ```javascript
 /**
  * @param {number[]} arr
  * @return {boolean}
- * f([2,4,5,1,3,3,7,8,9,10,300]) -> [3,3]
+ * f([2,4,5,1,3,3,7,8,9,10,300]) -> true
 */
 ```
 
@@ -308,7 +318,104 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-11. Name proper sequence of the event loop calls.
+11. Find one duplicated sequence
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ * f([1,2,3,4,5,6,7,8,3,9]) -> [3,3]
+*/
+```
+
+<details>
+<summary>Bad solution</summary>
+<pre>
+<script>
+  function findRepeat(arr) {
+    var result = [];
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = 0; j < arr.length; j++) {
+        if (arr[i] === arr[j] && i !== j) {
+          result.push(arr[i]);
+        }
+      }
+    }
+    return result;
+  }
+  console.log(findRepeat([1,2,3,4,5,6,7,8,3,9]));
+</script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Good solution</summary>
+<pre>
+<script>
+  function findRepeat(arr) {
+    const result = [];
+    const cache = {};
+    for (let i = 0; i < arr.length; i++) {
+      obj[arr[i]] = i;
+    }
+    for (const n of arr) {
+      if (arr.indexOf(n) !== obj[n]) {
+        result.push(n)
+      }
+    }
+    return result;
+  }
+  console.log(findRepeat([1,2,3,4,5,6,7,8,3,9]));
+</script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+---
+
+---
+
+12. Find ALL duplicated sequence and return them as arrays
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ * f([1,2,3,4,5,6,7,8,3,9]) -> [3,3]
+*/
+```
+
+<details>
+<summary>Good solution</summary>
+<pre>
+<script>
+  function findRepeats(arr) {
+    const result = [];
+    const cache = {};
+    for (let i = 0; i < arr.length; i++) {
+      cache[arr[i]] = cache[arr[i]] ? cache[arr[i]] + 1 : 1;
+    }
+    for (const n in cache) {
+      if (cache[n] > 1) {
+        const a = new Array(cache[n]).fill(n);
+        result.push(a);
+      }
+    }
+    return result;
+  }
+  console.log(findRepeats([1,2,3,4,5,3,6,7,5,8,9,5])); // [[3,3], [5,5,5]]
+  </script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+---
+
+13. Name proper sequence of the event loop calls.
 
 <details>
 <summary>Solution 1</summary>
@@ -347,7 +454,7 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-12. Find a number of coincidences in the array from half-interval for a number param.
+14. Find a number of coincidences in the array from half-interval for a number param.
 
 ```javascript
 /**
@@ -381,7 +488,7 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-13. Find out if two numbers in the array have target sum.
+15. Find out if two numbers in the array have target sum.
 
 ```javascript
 /**
@@ -415,7 +522,7 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-14. Convert all the params into a string with separator.
+16. Convert all the params into a string with separator.
 
 ```javascript
 /**
@@ -448,7 +555,7 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-15. Find out if object is empty.
+17. Find out if object is empty.
 
 ```javascript
 /**
@@ -493,7 +600,7 @@ console.log(removeChar('Hell#o!', '#'));
 </details>
 
 ---
-15. Find max value in the array
+18. Find max value in the array
 
 ```javascript
 /**
@@ -526,7 +633,7 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-16. Find shortest string in the array
+19. Find shortest string in the array
 
 ```javascript
 /**
@@ -560,7 +667,7 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-17. Write a function which will return amount of second passed by since its start 'till 10sec
+20. Write a function which will return amount of second passed by since its start 'till 10sec
 
 ```javascript
 /**
@@ -594,7 +701,7 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
-18. Write a function which will return arrays of pairs of numbers if its sum equals target number or empty arrays conversely.
+21. Write a function which will return arrays of pairs of numbers if its sum equals target number or empty arrays conversely.
 
 ```javascript
 /**
@@ -650,3 +757,4 @@ function findSum(arr, target) {
 </pre>
 </details>
 
+---
