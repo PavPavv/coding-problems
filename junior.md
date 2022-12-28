@@ -463,7 +463,7 @@ console.log(removeChar('Hell#o!', '#'));
  * @param {number} r
  * @param {number} target
  * @return {number}
- * f([0,0,0,0,1,2,3,4,5,6,0,], 1, 5, 5) -> 3
+ * f([0,0,0,0,1,2,3,4,5,6,0,], 1, 5, 0) -> 3
 */
 ```
 
