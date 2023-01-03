@@ -14,6 +14,53 @@
 <summary>Bad solution</summary>
 <pre>
 <script>
+  function groupAnagrams(arr) {
+    const temp = [];
+    const result = [];
+    const set = new Set();
+    for (let i = 0; i < arr.length; i++) {
+      const sortedWord = arr[i].toLowerCase().split('').sort().join('');
+      temp.push(sortedWord);
+      set.add(sortedWord);
+    }
+    for (const word of set) {
+      const group = [];
+      for (let i = 0; i < temp.length; i++) {
+        if (word === temp[i]) {
+          group.push(arr[i]);
+        }
+      }
+      result.push(group);
+    }
+    return result;
+  }
+  console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]))  // [["ate","eat","tea"], ["nat","tan"], ["bat"]]
+</script>
+<div>Complexity:</div>
+<p><strong>O(n^2) & O(k*n)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Good solution</summary>
+<pre>
+<script>
+function groupAnagrams(arr) {
+  const map = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    const sorted = arr[i].toLowerCase().split('').sort().join('').trim();
+    const value = map.has(sorted) ? map.get(sorted) : [];
+    value.push(arr[i]);
+    map.set(sorted, value);
+  }
+  return [...map.values()];
+}
+ console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"])) // [["bat"],["nat","tan"],["ate","eat","tea"]]
+</script>
+<div>Complexity:</div>
+<p><strong>?</strong></p>
+</pre>
+</details>
 
 </script>
 <div>Complexity:</div>
@@ -22,22 +69,22 @@
 </details>
 
 <details>
-<summary>Good solution</summary>
+<summary>Best solution 1</summary>
 <pre>
 <script>
-  const data = ["cat", "tac", "pie", "round", "dnour", "act", "ipe", "pei"];
-  function getAnagrams(anagrams) {
-    const cache = {}
-    anagrams.forEach((item) => {
-      const key = item.split('').sort().join('')
-      if (key in cache) {
-        cache[key].push(item)
-      } else {
-        cache[key] = [item]
-      }
-    })
+function groupAnagrams(arr) {
+  const hash = {};
+  for (let i = 0; i < arr.length; i++) {
+    const sorted = arr[i].toLowerCase().split('').sort().join('').trim();
+    if (hash[sorted]) {
+      hash[sorted].push(arr[i]);
+    } else {
+      hash[sorted] = [arr[i]];
+    }
   }
-  console.log(Object.values(cache));
+  return Object.values(hash);
+}
+ console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"])) // [["bat"],["nat","tan"],["ate","eat","tea"]]
 </script>
 <div>Complexity:</div>
 <p><strong>O(n^2)</strong></p>

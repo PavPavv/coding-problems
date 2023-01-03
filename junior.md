@@ -740,12 +740,15 @@ function findSum(arr, target) {
 <script>
 function findSum(arr, target) {
   const result = [];
+  const obj = {};
   for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      //  more complex check
-      if (arr[i] + arr[j] === target && arr[i] !== arr[j] && arr[i] < arr[j]) {
-        const pair = [arr[i], arr[j]];
-        result.push(pair);
+    obj[arr[i]] = i;
+  }
+  for (const num in obj) {
+    const secondNum = target - num;
+    if (+num + secondNum === target) {
+      if (secondNum > num) {
+        result.push([+num, secondNum]);
       }
     }
   }
