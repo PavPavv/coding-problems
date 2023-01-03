@@ -1,6 +1,6 @@
 # Pre-middle/middle level coding tasks
 
-1. Find anagram pairs
+1. Group anagram pairs
 
 ```javascript
 /**
@@ -37,7 +37,7 @@
   console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]))  // [["ate","eat","tea"], ["nat","tan"], ["bat"]]
 </script>
 <div>Complexity:</div>
-<p><strong>O(n^2) & O(k*n)</strong></p>
+<p><strong>O(n^2) + O(k*n)</strong></p>
 </pre>
 </details>
 
@@ -58,18 +58,12 @@ function groupAnagrams(arr) {
  console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"])) // [["bat"],["nat","tan"],["ate","eat","tea"]]
 </script>
 <div>Complexity:</div>
-<p><strong>?</strong></p>
-</pre>
-</details>
-
-</script>
-<div>Complexity:</div>
 <p><strong>O(n^2)</strong></p>
 </pre>
 </details>
 
 <details>
-<summary>Best solution 1</summary>
+<summary>Best solution </summary>
 <pre>
 <script>
 function groupAnagrams(arr) {
@@ -90,6 +84,8 @@ function groupAnagrams(arr) {
 <p><strong>O(n^2)</strong></p>
 </pre>
 </details>
+
+---
 
 2. Find most popular character in the string.
 
