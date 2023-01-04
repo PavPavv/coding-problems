@@ -196,7 +196,7 @@ function groupAnagrams(arr) {
 /**
  * @param {number[]} arr
  * @return {number}
- * f([10,-2,1,2,3,4,5]) -> 2
+ * f([10,-2,1,2,3,4,5]) -> -2
 */
 ```
 
@@ -215,7 +215,7 @@ function groupAnagrams(arr) {
     }
     return result;
   }
-  console.log(findMinEven([10,-2,1,2,3,4,5])) //  2
+  console.log(findMinEven([10,-2,1,2,3,4,5])) //  -2
 </script>
 <div>Complexity:</div>
 <p><strong>O(n)</strong></p>
@@ -226,16 +226,50 @@ function groupAnagrams(arr) {
 <summary>Solution 2</summary>
 <pre>
 <script>
-function findMinEven(array) {
-  const sorted = array.sort((a,b) => a-b);
-  for (let i = 0; i < sorted.length; i++) {
-    if (sorted[i] % 2 === 0) {
-      return sorted[i];
+  function findMinEven(array) {
+    const sorted = array.sort((a,b) => a-b);
+    for (let i = 0; i < sorted.length; i++) {
+      if (sorted[i] % 2 === 0) {
+        return sorted[i];
+      }
     }
+    return 0;
   }
-  return 0;
-}
-console.log(findMinEven([5,8,6,3,7,56,100,101,4,20])); //  4
+  console.log(findMinEven([10,-2,1,2,3,4,5])) //  -2
+</script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 3</summary>
+<pre>
+<script>
+  function findMinEven(array) {
+    let min = arr[0];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] % 2 === 0) {
+        if (arr[i] < min) min = arr[i];
+      }
+    }
+    return min;
+  }
+  console.log(findMinEven([10,-2,1,2,3,4,5])) //  -2
+</script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 4</summary>
+<pre>
+<script>
+  function findMinEven(array) {
+    return Math.min(...arr.filter((el) => el % 2 === 0));
+  }
+  console.log(findMinEven([10,-2,1,2,3,4,5])) //  -2
 </script>
 <div>Complexity:</div>
 <p><strong>O(n)</strong></p>
@@ -830,25 +864,7 @@ Function.prototype.myBind = function(fn, thisObj) {
 
 <!-- 15. Write a function which will return arrays of pairs of numbers if its sum equals target number or empty arrays conversely.
 
-```javascript
-/**
- * @param {number[]} arr
- * @param {number} target
- * @return {number[]} 
- * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
- */
-```
+4 ways of prototyping in JS? (__proto__, prototype, Object.create(), new, Object.setPrototypeOf(target, source))
 
-<details>
-<summary>Solution 1</summary>
-<pre>
-<script>
-function findSum(arr, target) {
-
-}
-</script>
-<div>Complexity: </div>
-<p><strong></strong></p>
-</pre>
-</details> -->
-
+16
+how to implement Object.create polyfill
