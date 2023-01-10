@@ -206,7 +206,7 @@ function groupAnagrams(arr) {
 <script>
   function findMinEven(arr) {
     let flag = false;
-    let result = 0;
+    let result = arr[0];
     for (let i = 1; i < arr.length; i++) {
       if (arr[i] % 2 === 0 && (!flag || arr[i] < result)) {
         result = arr[i];
@@ -238,7 +238,7 @@ function groupAnagrams(arr) {
   console.log(findMinEven([10,-2,1,2,3,4,5])) //  -2
 </script>
 <div>Complexity:</div>
-<p><strong>O(n)</strong></p>
+<p><strong>O(n - k)</strong></p>
 </pre>
 </details>
 
@@ -266,7 +266,7 @@ function groupAnagrams(arr) {
 <summary>Solution 4</summary>
 <pre>
 <script>
-  function findMinEven(array) {
+  function findMinEven(arr) {
     return Math.min(...arr.filter((el) => el % 2 === 0));
   }
   console.log(findMinEven([10,-2,1,2,3,4,5])) //  -2
@@ -319,6 +319,27 @@ function groupAnagrams(arr) {
 </pre>
 </details>
 
+<details>
+<summary>Solution 3 (ES5)</summary>
+<pre>
+<script>
+  function counterF(num) {
+    var counter = num || 0;
+    return function() {
+      return counter++;
+    }
+  }
+  var count = counterF(100);
+  count();
+  count();
+  count();
+  console.log(count());
+</script>
+<div>Complexity:</div>
+<p><strong>O(1)</strong></p>
+</pre>
+</details>
+
 ---
 
 6. Create string with char counter.
@@ -330,23 +351,47 @@ function groupAnagrams(arr) {
  * f('AABBBCCCCDDDDDE') -> 'A2B3C4D5E1'
 */
 ```
+
 <details>
 <summary>Solution 1</summary>
 <pre>
 <script>
-  function charCount(str) {
-    const spacelessStr = str.replaceAll(/\s/g, '');
-    const obj = {};
+  const charCount = (str) => {
+    const sortedStr = str.split('').sort().join('');
+    const hashTable = {};
     let result = '';
-    for (let i = 0; i < spacelessStr.length; i++ ) {
-      obj[spacelessStr[i]] = obj[spacelessStr[i]] ? obj[spacelessStr[i]] + 1 : 1;
+    for (let i = 0; i < sortedStr.length; i++) {
+      hashTable[sortedStr[i]] = hashTable[sortedStr[i]] ? hashTable[sortedStr[i]] + 1 : 1;
     }
-    for (const char in obj) {
-      result += `${char}${obj[char]}`;
+    for (const char in hashTable) {
+      result += `${char}${hashTable[char]}`
     }
     return result;
   }
-  console.log(charCount('AABBBCCCCDDDDDE'));
+  console.log(charCount('BBBAADDDDDECCCC'));  //  'A2B3C4D5E1'
+</script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2 (ES6)</summary>
+<pre>
+<script>
+  function charCount(str) {
+    var sortedStr = str.split('').sort().join('');
+    var hashTable = {};
+    var result = '';
+    for (let i = 0; i < sortedStr.length; i++) {
+      hashTable[sortedStr[i]] = hashTable[sortedStr[i]] ? hashTable[sortedStr[i]] + 1 : 1;
+    }
+    for (const char in hashTable) {
+      result += char + "" + hashTable[char];
+    }
+    return result;
+  }
+  console.log(charCount('BBBAADDDDDECCCC'));  //  'A2B3C4D5E1'
 </script>
 <div>Complexity:</div>
 <p><strong>O(n)</strong></p>
@@ -413,74 +458,49 @@ console.log(fib(9));  //  34
 ```
 
 <details>
-<summary>Solution 1</summary>
+<summary>Solution 1 (bad)</summary>
 <pre>
 <script>
-  function findSum(arr, target) {
-    const obj = {};
-    const result = [];
-    for (let i = 0; i < arr.length; i++) {
-      obj[arr[i]] = i;
-    }
-    for (const num in obj) {
-      const secondNum = target - num;
-      if (obj[secondNum] && secondNum > num) {
-        const pair = [+num, +secondNum];
-        result.push(pair);
-      }
-    }
-    return result;
-  }
-</script>
-<div>Complexity:</div>
-<p><strong>O(N+K) (algoritm speed: O(N) + memory: O(K))</strong></p>
-</pre>
-</details>
-
-<details>
-<summary>Solution 2</summary>
-<pre>
-<script>
-  const nums = [2,3,5,1,6,7,4,8,10,100,4,300,24,1];
-  function findSum(arr, target) {
-    const set = new Set();
-    const result = [];
-    for (let i = 0; i < arr.length; i++) {
-      set.add(arr[i]);
-    }
-    for (const num of set) {
-      const secondNum = target - num;
-      if (set.has(secondNum)) {
-        if (secondNum > num) {
-          result.push([num, secondNum]);
+  function findAllUniqueSums(arr, target) {
+    var result = [];
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = 1; j < arr.length; j++) {
+        if (arr[i]+arr[j] === target) {
+          if (arr[i] > arr[j]) {
+            result.push([arr[i],arr[j]]);
+          }
         }
       }
     }
     return result;
-  }
-  console.log(findSum(nums, 5));
+}
+console.log(findAllUniqueSums([3,5,300,1,7,4,-18,2,10,-5,23,11], 5));
 </script>
 <div>Complexity:</div>
-<p><strong>O(N+K) (algoritm speed: O(N) + memory: O(K))</strong></p>
+<p><strong>O(n^2)</strong></p>
 </pre>
 </details>
 
 <details>
-<summary>Solution 3</summary>
+<summary>Solution 2 (good)</summary>
 <pre>
 <script>
-function findSum(arr, target) {
-  const set = new Set();
-  const result = [];
-  for (let i = 0; i < arr.length; i++) {
-    const secondNum = target - arr[i];
-    if (set.has(secondNum)) {
-      result.push([arr[i], secondNum]);
+  function findAllUniqueSums(arr, target) {
+    var result = [];
+    var obj = {};
+    for (var i = 0; i < arr.length; i++) {
+      obj[arr[i]] = arr[i];
     }
-    set.add(arr[i]);
+    console.log(obj)
+    for (var num in obj) {
+      var secondNum = target - num;
+      if (obj[secondNum] && secondNum > num) {
+        result.push([obj[secondNum],obj[num]]);
+      }
+    }
+    return result;
   }
-  return result;
-}
+  console.log(findAllUniqueSums([3,5,300,1,7,4,-18,2,10,-5,23,11], 5));
 </script>
 <div>Complexity:</div>
 <p><strong>O(N+K) (algoritm speed: O(N) + memory: O(K))</strong></p>
@@ -571,7 +591,7 @@ function findSum(arr, target) {
 ```
 
 <details>
-<summary>Solution 1 (long, custom)</summary>
+<summary>Solution 1 (long, custom, bad)</summary>
 <pre>
 <script>
   function compare(a, b) {
@@ -608,7 +628,7 @@ function findSum(arr, target) {
     }
   };
   console.log(compare(-1, 30)); //  Type error
-  console.log(compare('', '')); // The strings are empty 
+  console.log(compare('', '')); // The strings are empty
   console.log(compare('', 'a'));  //  a
   console.log(compare('a', ''));  //  a
   console.log(compare('banana', 'avocado'));  //  avocado
@@ -626,7 +646,50 @@ function findSum(arr, target) {
 </details>
 
 <details>
-<summary>Solution 2 (short, native)</summary>
+<summary>Solution 2 (long, custom)</summary>
+<pre>
+<script>
+  function compare(a,b) {
+    if (typeof a !== 'string' || typeof b !== 'string') {
+      console.error('Both arguments must be a string');
+      return;
+    }
+    if (!a) return b;
+    if (!b) return a;
+    for (let i = 0; i < a.toLowerCase().length; i++) {
+      if (b[i]) {
+        if (a[i].toLowerCase() < b[i].toLowerCase()) {
+          return a;
+        } else if (a[i].toLowerCase() > b[i].toLowerCase()) {
+          return b;
+        } else continue;
+      } else {
+        return b;
+      }
+    }
+    return a.length === b.length ? a + " = " + b : a;
+  }
+  console.log(compare(-1, 30)); //  30
+  console.log(compare('', '')); //  ''
+  console.log(compare('', 'a'));  //  a
+  console.log(compare('a', ''));  //  ''
+  console.log(compare('ab', 'a'));  //  'a'
+  console.log(compare('banana', 'avocado'));  //  avocado
+  console.log(compare('Banana', 'Avocado'));  //  Avocado
+  console.log(compare('banana', 'Avocado'));  //  Avocado
+  console.log(compare('ooooo', 'oo'));  //  oo
+  console.log(compare('oo', 'oooooo')); //  oooooo
+  console.log(compare('oz', 'oooooo')); //  oooooo
+  console.log(compare('oooooo', 'oooooZ')); //oooooZ
+  console.log(compare('ooo', 'ooo')); // ooo = ooo
+</script>
+<div>Complexity:</div>
+<p><strong>O(N)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 3 (short, native)</summary>
 <pre>
 <script>
 function compare(str1, str2) {
@@ -638,8 +701,48 @@ console.log(compare('', '')); //  ''
 console.log(compare('', 'a'));  //  a
 console.log(compare('a', ''));  //  ''
 console.log(compare('banana', 'avocado'));  //  avocado
-console.log(compare('Banana', 'Avocado'));  //  avocado
-console.log(compare('banana', 'Avocado'));  //  avocado
+console.log(compare('Banana', 'Avocado'));  //  Avocado
+console.log(compare('banana', 'Avocado'));  //  Avocado
+console.log(compare('ooooo', 'oo'));  //  oo
+console.log(compare('oo', 'oooooo')); //  oooooo
+console.log(compare('oz', 'oooooo')); //  oooooo
+console.log(compare('oooooo', 'oooooZ')); //oooooo
+console.log(compare('ooo', 'ooo')); //ooo
+</script>
+<div>Complexity:</div>
+<p><strong>O(1)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 4 (short, native)</summary>
+<pre>
+<script>
+function compare(a,b) {
+  if (typeof a !== 'string' || typeof b !== 'string') {
+    return 'Both arguments must be a string'
+  }
+  if (!a) return b;
+  if (!b) return a;
+  var result = a.localeCompare(b);
+  switch(result) {
+    case 1:
+      return b;
+    case 0:
+      return a + " = " + b;
+    case -1:
+      return a;
+    default:
+      return result;  
+  }
+}
+console.log(compare(-1, 30)); //  30
+console.log(compare('', '')); //  ''
+console.log(compare('', 'a'));  //  a
+console.log(compare('a', ''));  //  ''
+console.log(compare('banana', 'avocado'));  //  avocado
+console.log(compare('Banana', 'Avocado'));  //  Avocado
+console.log(compare('banana', 'Avocado'));  //  Avocado
 console.log(compare('ooooo', 'oo'));  //  oo
 console.log(compare('oo', 'oooooo')); //  oooooo
 console.log(compare('oz', 'oooooo')); //  oooooo
@@ -647,7 +750,7 @@ console.log(compare('oooooo', 'oooooZ')); //oooooZ
 console.log(compare('ooo', 'ooo')); //ooo
 </script>
 <div>Complexity:</div>
-<p><strong>??</strong></p>
+<p><strong>O(1)</strong></p>
 </pre>
 </details>
 
@@ -868,3 +971,6 @@ Function.prototype.myBind = function(fn, thisObj) {
 
 16
 how to implement Object.create polyfill
+
+17
+custom reverse
