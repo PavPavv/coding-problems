@@ -669,10 +669,10 @@ console.log(findAllUniqueSums([3,5,300,1,7,4,-18,2,10,-5,23,11], 5));
     }
     return a.length === b.length ? a + " = " + b : a;
   }
-  console.log(compare(-1, 30)); //  30
+  console.log(compare(-1, 30)); //  Type error
   console.log(compare('', '')); //  ''
   console.log(compare('', 'a'));  //  a
-  console.log(compare('a', ''));  //  ''
+  console.log(compare('a', ''));  //  'a'
   console.log(compare('ab', 'a'));  //  'a'
   console.log(compare('banana', 'avocado'));  //  avocado
   console.log(compare('Banana', 'Avocado'));  //  Avocado
@@ -680,7 +680,7 @@ console.log(findAllUniqueSums([3,5,300,1,7,4,-18,2,10,-5,23,11], 5));
   console.log(compare('ooooo', 'oo'));  //  oo
   console.log(compare('oo', 'oooooo')); //  oooooo
   console.log(compare('oz', 'oooooo')); //  oooooo
-  console.log(compare('oooooo', 'oooooZ')); //oooooZ
+  console.log(compare('oooooo', 'oooooZ')); //oooooo
   console.log(compare('ooo', 'ooo')); // ooo = ooo
 </script>
 <div>Complexity:</div>
@@ -696,10 +696,10 @@ function compare(str1, str2) {
   const result = str1.toString().localeCompare(str2.toString());
   return result ? str2 : str1;
 }
-console.log(compare(-1, 30)); //  30
+console.log(compare(-1, 30)); //  Type error
 console.log(compare('', '')); //  ''
 console.log(compare('', 'a'));  //  a
-console.log(compare('a', ''));  //  ''
+console.log(compare('a', ''));  //  'a'
 console.log(compare('banana', 'avocado'));  //  avocado
 console.log(compare('Banana', 'Avocado'));  //  Avocado
 console.log(compare('banana', 'Avocado'));  //  Avocado
@@ -736,17 +736,17 @@ function compare(a,b) {
       return result;  
   }
 }
-console.log(compare(-1, 30)); //  30
+console.log(compare(-1, 30)); //  Type error
 console.log(compare('', '')); //  ''
 console.log(compare('', 'a'));  //  a
-console.log(compare('a', ''));  //  ''
+console.log(compare('a', ''));  //  'a'
 console.log(compare('banana', 'avocado'));  //  avocado
 console.log(compare('Banana', 'Avocado'));  //  Avocado
 console.log(compare('banana', 'Avocado'));  //  Avocado
 console.log(compare('ooooo', 'oo'));  //  oo
 console.log(compare('oo', 'oooooo')); //  oooooo
 console.log(compare('oz', 'oooooo')); //  oooooo
-console.log(compare('oooooo', 'oooooZ')); //oooooZ
+console.log(compare('oooooo', 'oooooZ')); //ooooo0
 console.log(compare('ooo', 'ooo')); //ooo
 </script>
 <div>Complexity:</div>
@@ -765,7 +765,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 ```
 
 <details>
-<summary>Solution 2 (short, native)</summary>
+<summary>Solution</summary>
 <pre>
 <script>
   String.prototype.repeating = function(num) {
@@ -780,7 +780,50 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-12. Find "black ship" in an array.
+12. Write myBind native method
+
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+  Function.prototype.myBind = function(thisObj) {
+    var self = this;
+    return function() {
+      self.call(thisObj);
+    }
+  };
+  var test = someFn.myBind(someObj);
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
+
+13. Write myForEach native method
+
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+  Array.prototype.myForEach = function(cb) {
+    for (var i = 0; i < this.length; i++) {
+      cb(this[i],i,this);
+    }
+  };
+  [1,2,3].myForEach(function(el) { console.log(el) })
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
+
+14. Find "black ship" in an array.
 
 ```javascript
 /**
@@ -838,7 +881,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-13. Find list of shortest strings in the array
+15. Find list of shortest strings in the array
 
 ```javascript
 /**
@@ -878,7 +921,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-14. Create expression, like: five(plus(seven(minus(three())))) which returns 9
+16. Create expression, like: five(plus(seven(minus(three())))) which returns 9
 
 <details>
 <summary>Solution 1</summary>
@@ -918,7 +961,7 @@ console.log(five(plus(seven(minus(three())))));
 
 ---
 
-15. Write a function which will return accumulated amount of seconds since previous tick
+17. Write a function which will return accumulated amount of seconds since previous tick
 
 ```javascript
 /**
@@ -954,23 +997,13 @@ console.log(five(plus(seven(minus(three())))));
 
 ---
 
-<!-- Write custom bind -->
-<!-- 
-Function.prototype.myBind = function(fn, thisObj) {
-  return function() {
-    return fn.apply(thisObj, arguments);
-  }
-}
- -->
-
-<!-- Write custom forEach -->
 
 <!-- 15. Write a function which will return arrays of pairs of numbers if its sum equals target number or empty arrays conversely.
 
-4 ways of prototyping in JS? (__proto__, prototype, Object.create(), new, Object.setPrototypeOf(target, source))
-
 16
 how to implement Object.create polyfill
+
+4 ways of prototyping in JS? (__proto__, prototype, Object.create(), new, Object.setPrototypeOf(target, source))  
 
 17
 custom reverse
