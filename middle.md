@@ -804,7 +804,6 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 13. Write myForEach native method
 
-
 <details>
 <summary>Solution</summary>
 <pre>
@@ -823,7 +822,141 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-14. Find "black ship" in an array.
+14. Write reverse string method implemented in global string prototype
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+String.prototype.reverse = function() {
+  var result = '';
+  var i = 0
+  while (i < this.length) {
+    i++;
+    result += this[this.length - i];
+  }
+  return result;
+}
+console.log('test'.reverse()) //  'tset'
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
+
+15. Write down 5 ways to create prototype in object in JS
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+  'use strict';
+  //  1 __proto__:
+  const obj1 = {
+    name: 'Jack',
+  };
+  const obj2 = {};
+  obj2.__proto__ = obj1;
+  console.log(obj2.name)  //  'Jack'
+  // 2  Object.create:
+  const obj1a = {
+    name: 'Jack',
+  };
+  const obj2a = Object.create(obj1a);
+  console.log(obj2a.name)  //  'Jack'
+  // 3  setPrototypeOf
+  const obj1b = {
+    name: 'Jack',
+  };
+  const obj2b = {};
+  Object.setPrototypeOf(obj2b, obj1b);
+  console.log(obj2b.name)  //  'Jack'
+  // 4  function-constructor with prototype (creating new object with given "this"):
+  //  Animal
+  function Animal(kind) {
+    this.kind = kind || 'no kind';
+  }
+  Animal.prototype.getKind = function() {
+    return this.kind;
+  }
+  Animal.prototype.setKind = function(k) {
+    this.kind = k;
+  }
+  //  Dog
+  function Dog(name) {
+    this.name = name || 'no name';
+  }
+  // ES5 sort of inheritance
+  Dog.prototype = new Animal;
+  Dog.prototype.constructor = Animal;
+  Dog.prototype.getName = function() {
+    return this.name;
+  }
+  var myDog = new Dog('Jack');
+  console.log(myDog.getName());
+  myDog.setKind('shepherd');
+  console.log(myDog.getKind());
+  // ES6 sort of inheritance with classes syntax sugar:
+  // Animal
+  class Animal {
+    constructor(kind) {
+      this.kind = kind || 'no kind';
+    }
+    setKind(k) {
+      this.kind = k;
+    }
+    getKind() {
+      return this.kind;
+    }
+  }
+  // Dog
+  class Dog extends Animal {
+    constructor(name) {
+      super();
+      this.name = name;
+    }
+    setName(n) {
+      this.name = n;
+    }
+    getName() {
+      return this.name;
+    }
+  }
+  const myDoggy = new Dog('Jack');
+  myDoggy.setKind('shepherd');
+  console.log(myDoggy.getName());  //  'Jack'
+  console.log(myDoggy.getKind());  //  'shepherd'
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
+
+16. Write custom Object.create global method
+
+<details>
+<summary>Solution</summary>
+<pre>
+<script>
+Object.prototype.myCreate = function(o) {
+  function F() {}
+  F.prototype = o;
+  return new F();
+}
+
+</script>
+<div>Complexity:</div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
+
+17. Find "black ship" in an array.
 
 ```javascript
 /**
@@ -881,7 +1014,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-15. Find list of shortest strings in the array
+18. Find list of shortest strings in the array
 
 ```javascript
 /**
@@ -921,7 +1054,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 
 ---
 
-16. Create expression, like: five(plus(seven(minus(three())))) which returns 9
+19. Create expression, like: five(plus(seven(minus(three())))) which returns 9
 
 <details>
 <summary>Solution 1</summary>
@@ -961,7 +1094,7 @@ console.log(five(plus(seven(minus(three())))));
 
 ---
 
-17. Write a function which will return accumulated amount of seconds since previous tick
+20. Write a function which will return accumulated amount of seconds since previous tick
 
 ```javascript
 /**
@@ -996,14 +1129,3 @@ console.log(five(plus(seven(minus(three())))));
 </details>
 
 ---
-
-
-<!-- 15. Write a function which will return arrays of pairs of numbers if its sum equals target number or empty arrays conversely.
-
-16
-how to implement Object.create polyfill
-
-4 ways of prototyping in JS? (__proto__, prototype, Object.create(), new, Object.setPrototypeOf(target, source))  
-
-17
-custom reverse
