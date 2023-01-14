@@ -77,7 +77,7 @@
 <summary>Solution</summary>
 <pre>
 <script>
-  function isPalindrome = (str) => {
+  function isPalindrome(str) {
     str = str.toLowerCase();
     return str === str.split("").reverse().join("");
   };
@@ -376,8 +376,6 @@ console.log(removeChar('Hell#o!', '#'));
 
 ---
 
----
-
 12. Find ALL duplicated sequence and return them as arrays
 
 ```javascript
@@ -550,8 +548,6 @@ console.log(removeChar('Hell#o!', '#'));
 <p><strong>O(1)</strong></p>
 </pre>
 </details>
-
----
 
 ---
 

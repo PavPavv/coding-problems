@@ -970,7 +970,7 @@ Object.prototype.myCreate = function(o) {
 <summary>Solution 1</summary>
 <pre>
 <script>
-  function findBlackShip(arr) {
+  function findBlackSheep(arr) {
     let oddCounter = 0;
     let evenCounter = 0;
     let lastOdd = 0
@@ -989,6 +989,7 @@ Object.prototype.myCreate = function(o) {
       else return lastOdd;
     } else return -1;
   };
+  console.log(findBlackSheep([2,4,6,8,9,10,12]))
 </script>
 <div>Complexity:</div>
 <p><strong>O(N)</strong></p>
@@ -999,13 +1000,13 @@ Object.prototype.myCreate = function(o) {
 <summary>Solution 2</summary>
 <pre>
 <script>
-  function findBlackShip(arr) {
+  function findBlackSheep(arr) {
     const binaryArr = arr.map(x => x % 2);
     const bArrSum = binaryArr.reduce((a,b) => a+b);
     const target = bArrSum > 1 ? 0 : 1;
     return arr[binaryArr.indexOf(target)];
   };
-  console.log(findBlackShip([2,4,6,8,9,10,12]))
+  console.log(findBlackSheep([2,4,6,8,9,10,12]))
 </script>
 <div>Complexity: </div>
 <p><strong>O(N)</strong></p>
@@ -1048,7 +1049,7 @@ Object.prototype.myCreate = function(o) {
   console.log(getShortestStrFromArr(wordsArr)); //  ['mu', 'mc']
 </script>
 <div>Complexity: </div>
-<p><strong>O(N-1)</strong></p>
+<p><strong>O(N)</strong></p>
 </pre>
 </details>
 
