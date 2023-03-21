@@ -7,7 +7,7 @@
  * @param {string[]} str
  * @return {string[][]}
  * f(['ana', 'nan', 'pie', 'cort', 'iep']) -> [['ana', 'nan], ['pie', 'iep']]
-*/
+ */
 ```
 
 <details>
@@ -94,7 +94,7 @@ function groupAnagrams(arr) {
  * @param {string} str
  * @return {number}
  * f('ababa') -> 'a'
-*/
+ */
 ```
 
 <details>
@@ -162,8 +162,9 @@ function groupAnagrams(arr) {
  * @param {number[]} arr
  * @return {number[]}
  * f([10,-2,1,2,3,4,5]) -> [10,5]
-*/
+ */
 ```
+
 <details>
 <summary>Solution</summary>
 <pre>
@@ -197,7 +198,7 @@ function groupAnagrams(arr) {
  * @param {number[]} arr
  * @return {number}
  * f([10,-2,1,2,3,4,5]) -> -2
-*/
+ */
 ```
 
 <details>
@@ -349,7 +350,7 @@ function groupAnagrams(arr) {
  * @param {string} str
  * @return {string}
  * f('AABBBCCCCDDDDDE') -> 'A2B3C4D5E1'
-*/
+ */
 ```
 
 <details>
@@ -407,8 +408,9 @@ function groupAnagrams(arr) {
  * @param {number} num
  * @return {number}
  * f(9) -> 34
-*/
+ */
 ```
+
 <details>
 <summary>Solution 1 (recursive)</summary>
 <pre>
@@ -452,7 +454,7 @@ console.log(fib(9));  //  34
 /**
  * @param {number[]} arr
  * @param {number} target
- * @return {number[]} 
+ * @return {number[]}
  * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
  */
 ```
@@ -518,7 +520,7 @@ console.log(findAllUniqueSums([3,5,300,1,7,4,-18,2,10,-5,23,11], 5));
  * @param {string} b
  * @return {number}
  * f('abbaao', 'a', 'b') -> 4
-*/
+ */
 ```
 
 <details>
@@ -587,7 +589,7 @@ console.log(findAllUniqueSums([3,5,300,1,7,4,-18,2,10,-5,23,11], 5));
  * @param {string} b
  * @return {string}
  * f('banana', 'avocado') -> 'avocado'
-*/
+ */
 ```
 
 <details>
@@ -761,7 +763,7 @@ console.log(compare('ooo', 'ooo')); //ooo
 ```javascript
 /**
  * 'Hello'.repeating(3) -> 'Hello Hello Hello'
-*/
+ */
 ```
 
 <details>
@@ -781,7 +783,6 @@ console.log(compare('ooo', 'ooo')); //ooo
 ---
 
 12. Write myBind native method
-
 
 <details>
 <summary>Solution</summary>
@@ -963,7 +964,7 @@ Object.prototype.myCreate = function(o) {
  * @param {number[]} arr
  * @return {number}
  * f([2,4,6,8,9,10,12]) -> 9
-*/
+ */
 ```
 
 <details>
@@ -1019,11 +1020,11 @@ Object.prototype.myCreate = function(o) {
 
 ```javascript
 /**
-* @param {string[]}
-* @return {string}
-*...
-* func(['ab', 'a', 'abc']) -> a
-*/
+ * @param {string[]}
+ * @return {string}
+ *...
+ * func(['ab', 'a', 'abc']) -> a
+ */
 ```
 
 <details>
@@ -1099,11 +1100,11 @@ console.log(five(plus(seven(minus(three())))));
 
 ```javascript
 /**
-* @param {number}
-* @return {void}
-*...
-* func(1) -> 1...,2......,3.........,4............,5...............,6..................,7.....................,8........................, ...10...
-*/
+ * @param {number}
+ * @return {void}
+ *...
+ * func(1) -> 1...,2......,3.........,4............,5...............,6..................,7.....................,8........................, ...10...
+ */
 ```
 
 <details>
@@ -1130,3 +1131,5 @@ console.log(five(plus(seven(minus(three())))));
 </details>
 
 ---
+
+21. Write your own map function

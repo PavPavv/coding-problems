@@ -10,7 +10,7 @@
  * @param {number} target
  * @return {number}
  * f([1,2,3,1,2,3],3) -> 2
-*/
+ */
 ```
 
 <details>
@@ -38,9 +38,9 @@
 /**
  * @param {number} array
  * @param {number} target
- * @return {number} 
+ * @return {number}
  * f([1,2,3,1,2,3],3) -> 5
-*/
+ */
 ```
 
 <details>
@@ -70,7 +70,7 @@
  * @param {string} str
  * @return {boolean}
  * f('ana') -> true
-*/
+ */
 ```
 
 <details>
@@ -98,7 +98,7 @@
  * @param {number} target
  * @return {string[]}
  * f(["Mark", "John", "Anna", "Maria"]) -> ["Mark", "John", "Anna"]
-*/
+ */
 ```
 
 <details>
@@ -124,7 +124,7 @@
  * @param {string} word
  * @return {number}
  * f('wolf') -> 1
-*/
+ */
 ```
 
 <details>
@@ -171,7 +171,7 @@
  * @param {number} b
  * @return {number}
  * f(1,5) -> 15
-*/
+ */
 ```
 
 <details>
@@ -203,7 +203,7 @@
  * @param {string} str
  * @return {string}
  * f('testing') -> 't'
-*/
+ */
 ```
 
 <details>
@@ -233,7 +233,7 @@
  * @param {number} num
  * @return {number}
  * f(25) -> 425 (4+25)
-*/
+ */
 ```
 
 <details>
@@ -263,7 +263,7 @@ console.log(squareDigits(25));
  * @param {string} str
  * @return {string}
  * f('Hell#o!') -> 'Hello!'
-*/
+ */
 ```
 
 <details>
@@ -290,7 +290,7 @@ console.log(removeChar('Hell#o!', '#'));
  * @param {number[]} arr
  * @return {boolean}
  * f([2,4,5,1,3,3,7,8,9,10,300]) -> true
-*/
+ */
 ```
 
 <details>
@@ -325,7 +325,7 @@ console.log(removeChar('Hell#o!', '#'));
  * @param {number[]} arr
  * @return {boolean}
  * f([1,2,3,4,5,6,7,8,3,9]) -> [3,3]
-*/
+ */
 ```
 
 <details>
@@ -383,7 +383,7 @@ console.log(removeChar('Hell#o!', '#'));
  * @param {number[]} arr
  * @return {boolean}
  * f([1,2,3,4,5,6,7,8,3,9]) -> [3,3]
-*/
+ */
 ```
 
 <details>
@@ -462,7 +462,7 @@ console.log(removeChar('Hell#o!', '#'));
  * @param {number} target
  * @return {number}
  * f([0,0,0,0,1,2,3,4,5,6,0,], 1, 5, 0) -> 3
-*/
+ */
 ```
 
 <details>
@@ -494,7 +494,7 @@ console.log(removeChar('Hell#o!', '#'));
  * @return {boolean}
  * f([2,3,5,1,6,7,8,10,100], 5) -> true
  * f([2,3,5,1,6,7,8,10,100], 1000) -> false
-*/
+ */
 ```
 
 <details>
@@ -524,14 +524,14 @@ console.log(removeChar('Hell#o!', '#'));
 
 ```javascript
 /**
-* @param {string}
-* @param {number}
-* @param {number}
-* ...
-* @return {string}
-*...
-* func('!', 4, -10, 34, 0) -> '!4!-10!34!0'
-*/
+ * @param {string}
+ * @param {number}
+ * @param {number}
+ * ...
+ * @return {string}
+ *...
+ * func('!', 4, -10, 34, 0) -> '!4!-10!34!0'
+ */
 ```
 
 <details>
@@ -555,11 +555,11 @@ console.log(removeChar('Hell#o!', '#'));
 
 ```javascript
 /**
-* @param {object}
-* @return {boolean}
-*...
-* func({}) -> true
-*/
+ * @param {object}
+ * @return {boolean}
+ *...
+ * func({}) -> true
+ */
 ```
 
 <details>
@@ -596,15 +596,16 @@ console.log(removeChar('Hell#o!', '#'));
 </details>
 
 ---
+
 18. Find max value in the array
 
 ```javascript
 /**
-* @param {number[]}
-* @return {number}
-*...
-* func([3,5,2,1,3,7,66,8,9,4,100,45]) -> 100
-*/
+ * @param {number[]}
+ * @return {number}
+ *...
+ * func([3,5,2,1,3,7,66,8,9,4,100,45]) -> 100
+ */
 ```
 
 <details>
@@ -633,11 +634,11 @@ console.log(removeChar('Hell#o!', '#'));
 
 ```javascript
 /**
-* @param {string[]}
-* @return {string}
-*...
-* func(['ab', 'a', 'abc']) -> a
-*/
+ * @param {string[]}
+ * @return {string}
+ *...
+ * func(['ab', 'a', 'abc']) -> a
+ */
 ```
 
 <details>
@@ -667,11 +668,11 @@ console.log(removeChar('Hell#o!', '#'));
 
 ```javascript
 /**
-* @param {number}
-* @return {void}
-*...
-* func(1) -> 1...,2...,3...,4...,5...,6...,7...,8...,9...,10....
-*/
+ * @param {number}
+ * @return {void}
+ *...
+ * func(1) -> 1...,2...,3...,4...,5...,6...,7...,8...,9...,10....
+ */
 ```
 
 <details>
@@ -703,7 +704,7 @@ console.log(removeChar('Hell#o!', '#'));
 /**
  * @param {number[]} arr
  * @param {number} target
- * @return {number[]} 
+ * @return {number[]}
  * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
  */
 ```

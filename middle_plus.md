@@ -58,18 +58,19 @@
 
 ```javascript
 /**
-* @param {string} s
-* @return {boolean}
-*...
-* func("---(++++)----")) //  true
-* func(""))  //  true
-* func("before ( middle []) after ")) true
-* func(")(")) false
-* func("<( >)"))  false
-* func("( [ <> () ] <> )")) true
-* func(" (    [)")) false
-*/
+ * @param {string} s
+ * @return {boolean}
+ *...
+ * func("---(++++)----")) //  true
+ * func(""))  //  true
+ * func("before ( middle []) after ")) true
+ * func(")(")) false
+ * func("<( >)"))  false
+ * func("( [ <> () ] <> )")) true
+ * func(" (    [)")) false
+ */
 ```
+
 <details>
 <summary>Solution 1</summary>
 <pre>
@@ -110,17 +111,18 @@ function verify(s) {
 
 ```javascript
 /**
-* @param {string[]} strArr
-* @return {string}
-*
-* func(["flower", "flow", "flight"])) -> 'fl'
-* func(longestComPrfx([])) -> ''
-* func(longestComPrfx(["flower"])) -> ''
-* func(longestComPrfx(["", "", "", ""])) -> ''
-* func(longestComPrfx(["flower", {}, null])) -> ''
-* func([[], {}, "flower",  null])) -> ''
-*/
+ * @param {string[]} strArr
+ * @return {string}
+ *
+ * func(["flower", "flow", "flight"])) -> 'fl'
+ * func(longestComPrfx([])) -> ''
+ * func(longestComPrfx(["flower"])) -> ''
+ * func(longestComPrfx(["", "", "", ""])) -> ''
+ * func(longestComPrfx(["flower", {}, null])) -> ''
+ * func([[], {}, "flower",  null])) -> ''
+ */
 ```
+
 <details>
 <summary>Solution 1</summary>
 <pre>
@@ -168,16 +170,16 @@ console.log(longestComPrfx([[], {}, "flower",  null]));
 </pre>
 </details>
 
-3. Simplest left binary search
+4. Simplest left binary search
 
 ```javascript
 /**
-* @param {number[]} a
-* @param {number} x
-* @return {boolean}
-*...
-* func([1,2,3,4,5], 4) -> 3
-*/
+ * @param {number[]} a
+ * @param {number} x
+ * @return {boolean}
+ *...
+ * func([1,2,3,4,5], 4) -> 3
+ */
 ```
 
 <details>
@@ -231,7 +233,7 @@ console.log(lbSearch([1,2,3,4,5,6,7,8,9], 4)); //  3
 
 ---
 
-3. Write your own parseInt
+5. Write your own parseInt
 
 ```javascript
 /**
@@ -264,13 +266,13 @@ console.log(myParseInt('20458')); //  20458
 
 ---
 
-4. Find out if a sum of two numbers in a **sorted** array equals target number. All combinations must be **unique**.
+6. Find out if a sum of two numbers in a **sorted** array equals target number. All combinations must be **unique**.
 
 ```javascript
 /**
  * @param {number[]} arr
  * @param {number} target
- * @return {number[]} 
+ * @return {number[]}
  * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
  */
 ```
@@ -308,13 +310,13 @@ console.log(myParseInt('20458')); //  20458
 
 ---
 
-5. Write a function which will return arrays of number tuples consisting of two number which sum is equal to target. Or closest result.
+7. Write a function which will return arrays of number tuples consisting of two number which sum is equal to target. Or closest result.
 
 ```javascript
 /**
  * @param {number[]} arr
  * @param {number} target
- * @return {number[]} 
+ * @return {number[]}
  * func([1,2,3,4,5,6], 6) -> [[1,5], [2,4]];
  */
 ```
@@ -352,7 +354,7 @@ console.log(myParseInt('20458')); //  20458
 
 ---
 
-6. Write a function which splits text into a small messages. 1 sms must be smaller than 140 characters and should end with ' k/n' suffix, where n - the whole amount of messages and k - current number of message. No punctuation and symbols except latin letter and spaces are allowed. sms can't be divided in the middle of a word. No words wrapping.
+8. Write a function which splits text into a small messages. 1 sms must be smaller than 140 characters and should end with ' k/n' suffix, where n - the whole amount of messages and k - current number of message. No punctuation and symbols except latin letter and spaces are allowed. sms can't be divided in the middle of a word. No words wrapping.
 
 ```javascript
 /***
