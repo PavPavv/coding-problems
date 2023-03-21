@@ -683,7 +683,6 @@ console.log(removeChar('Hell#o!', '#'));
     let counter = 1;
     setInterval(() => {
       if (counter <= 10) {
-        console.log(counter);
         counter++;
       }
       return;
