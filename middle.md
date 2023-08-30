@@ -1141,8 +1141,14 @@ console.log(five(plus(seven(minus(three())))));
 <summary>Solution 1</summary>
 <pre>
 <script>
+  const user = {
+    firstName: 'Bob',
+  };
   const fetchUrl = (url) => {
     console.log(`fetching ${url}...`);
+  };
+  function fetchUrl1(url) {
+    console.log(`fetching ${url}...`, this.firstName);
   };
   function debounce(cb, delay) {
     let timer = null;
@@ -1156,11 +1162,19 @@ console.log(five(plus(seven(minus(three())))));
     }
   }
   const fetching = debounce(fetchUrl, 300);
+  const fetching1 = debounce(fetchUrl1.bind(user), 300);
+  //
   fetching(1);
   fetching(2);
   fetching(3);
   fetching(4);
   fetching(5);
+  //
+  fetching1(1);
+  fetching1(2);
+  fetching1(3);
+  fetching1(4);
+  fetching1(5);
 </script>
 <div>Complexity: </div>
 <p><strong>O(1)</strong></p>
