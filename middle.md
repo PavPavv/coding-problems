@@ -1133,3 +1133,38 @@ console.log(five(plus(seven(minus(three())))));
 ---
 
 21. Write your own map function
+
+22. Write your own debounce function
+
+```javascript
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  const fetchUrl = (url) => {
+    console.log(`fetching ${url}...`);
+  };
+  function debounce(cb, delay) {
+    let timer = null;
+    return (...args) => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(() => {
+        cb(...args);
+      }, delay);
+    }
+  }
+  const fetching = debounce(fetchUrl, 300);
+  fetching(1);
+  fetching(2);
+  fetching(3);
+  fetching(4);
+  fetching(5);
+</script>
+<div>Complexity: </div>
+<p><strong>O(1)</strong></p>
+</pre>
+</details>
+---
+```
