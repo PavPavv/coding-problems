@@ -1,6 +1,65 @@
 # Middle/middle+ level coding tasks
 
-1. Binary tree sum
+1. Binary tree to array
+
+```javascript
+/**
+ * @param {object} tree
+ * @return {number[]}
+```
+
+<details>
+<summary>Solution 1</summary>
+<pre>
+<script>
+  const tree = {
+    value: 1,
+    children: [
+      {
+        value: 2,
+        children: [
+          {
+            value: 3,
+          },
+        ],
+      },
+      {
+        value: 4,
+        children: [
+          {
+            value: 5,
+          },
+          {
+            value: 6,
+          },
+        ]
+      },
+    ],
+  };
+  function getTreeValues(t) {
+    var stack = [t];
+    var result = [];
+    while (stack.length > 0) {
+      var node = stack.pop();
+      if (node.value !== undefined) {
+        result.push(node.value);
+      }
+      if (node.children?.length) {
+        stack.push(...node.children);
+      }
+    }
+    return result;
+  }
+  console.log(getTreeValues(tree));
+</script>
+<div>Complexity:</div>
+<p><strong>O(n)</strong></p>
+</pre>
+</details>
+
+---
+
+2. Binary tree sum
 
 ```javascript
 /**
@@ -54,7 +113,7 @@
 
 ---
 
-2. Code simple syntax analyser
+3. Code simple syntax analyser
 
 ```javascript
 /**
@@ -107,7 +166,7 @@ function verify(s) {
 
 ---
 
-3. Find longest common preffix in the array of strings
+4. Find longest common preffix in the array of strings
 
 ```javascript
 /**
@@ -170,7 +229,7 @@ console.log(longestComPrfx([[], {}, "flower",  null]));
 </pre>
 </details>
 
-4. Simplest left binary search
+5. Simplest left binary search
 
 ```javascript
 /**
@@ -233,7 +292,7 @@ console.log(lbSearch([1,2,3,4,5,6,7,8,9], 4)); //  3
 
 ---
 
-5. Write your own parseInt
+6. Write your own parseInt
 
 ```javascript
 /**
@@ -266,7 +325,7 @@ console.log(myParseInt('20458')); //  20458
 
 ---
 
-6. Find out if a sum of two numbers in a **sorted** array equals target number. All combinations must be **unique**.
+7. Find out if a sum of two numbers in a **sorted** array equals target number. All combinations must be **unique**.
 
 ```javascript
 /**
@@ -310,7 +369,7 @@ console.log(myParseInt('20458')); //  20458
 
 ---
 
-7. Write a function which will return arrays of number tuples consisting of two number which sum is equal to target. Or closest result.
+8. Write a function which will return arrays of number tuples consisting of two number which sum is equal to target. Or closest result.
 
 ```javascript
 /**
@@ -354,7 +413,7 @@ console.log(myParseInt('20458')); //  20458
 
 ---
 
-8. Write a function which splits text into a small messages. 1 sms must be smaller than 140 characters and should end with ' k/n' suffix, where n - the whole amount of messages and k - current number of message. No punctuation and symbols except latin letter and spaces are allowed. sms can't be divided in the middle of a word. No words wrapping.
+9. Write a function which splits text into a small messages. 1 sms must be smaller than 140 characters and should end with ' k/n' suffix, where n - the whole amount of messages and k - current number of message. No punctuation and symbols except latin letter and spaces are allowed. sms can't be divided in the middle of a word. No words wrapping.
 
 ```javascript
 /***
