@@ -757,3 +757,142 @@ function findSum(arr, target) {
 </details>
 
 ---
+
+22. What will be in the output?
+
+<details>
+<summary></summary>
+<pre>
+<script>
+  let obj = { band: 'Metallica' };
+  let obj1 = obj;
+  obj = { band: 'Nirvana' };
+  console.log(obj);
+  console.log(obj1);
+</script>
+<div>Complexity: </div>
+<p><strong>O(N^2)</strong></p>
+</pre>
+</details>
+
+---
+
+23. What will be in the output?
+
+<details>
+<summary></summary>
+<pre>
+<script>
+  function someFn() {
+    try {
+      if (Math.random() >= 0.5) {
+        throw new Error('oops');
+      }
+      return 1;
+    } catch(e) {
+      return 2;
+    } finally {
+      return 3;
+    }
+  }
+  console.log(someFn());
+</script>
+<div>Complexity: </div>
+<p><strong>O(N^2)</strong></p>
+</pre>
+</details>
+
+---
+
+24. Check if there are equal amount of brackets
+
+```javascript
+/**
+ * @param {string} s
+ * @return {boolean}
+ * func('((()))') -> true;
+ */
+```
+
+<details>
+<summary>Solution 1 (naive dirty solution)</summary>
+<pre>
+<script>
+  function test(s) {
+    const stack = [];
+    for (let i = 0; i < s.length; i++) {
+      const bracket = s[i];
+      if (bracket === '(') {
+        stack.push(bracket);
+      } else {
+        const lastEl = stack.pop();
+        if (!lastEl) {
+          return false;
+        }
+      }
+    }
+    return stack.length === 0 ? true : false;
+  }
+  console.log(test('((())'));
+  console.log(test('((()))'));
+  console.log(test('((()))))))'));
+</script>
+<div>Complexity: </div>
+<p><strong>O(N)</strong></p>
+</pre>
+</details>
+
+<details>
+<summary>Solution 2</summary>
+<pre>
+<script>
+  function test(s) {
+    const stack = [];
+    const pairs = {
+      open: ['(', '[', '{'],
+      close: [')', ']', '}'],
+    };
+    for (let i = 0; i < s.length; i++) {
+      const bracket = s[i];
+      if (pairs.open.includes(bracket)) {
+        stack.push(bracket);
+      } else {
+        const lastEl = stack.pop();
+        if (!lastEl) {
+          return false;
+        }
+      }
+    }
+    return stack.length === 0 ? true : false;
+  }
+  console.log(test('((([])){}'));
+  console.log(test('((())){}'));
+  console.log(test('((()))))))'));
+</script>
+<div>Complexity: </div>
+<p><strong>O(N)</strong></p>
+</pre>
+</details>
+
+---
+
+23. Create ES5 constructor function
+
+<details>
+<summary></summary>
+<pre>
+<script>
+  function User(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  const user = new User('Pav', 28);
+  console.log(user); //  { name: 'Pav', age: 28 }
+  console.log(user instanceof User);
+</script>
+<div>Complexity: </div>
+<p><strong></strong></p>
+</pre>
+</details>
+
+---
