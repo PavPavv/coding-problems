@@ -712,18 +712,18 @@ console.log(removeChar('Hell#o!', '#'));
 <summary>Solution 1 (naive dirty solution)</summary>
 <pre>
 <script>
-function findSum(arr, target) {
-  const result = [];
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      if (arr[i] + arr[j] === target) {
-        const pair = [arr[i], arr[j]];
-        result.push(pair);
+  function findSum(arr, target) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[i] + arr[j] === target) {
+          const pair = [arr[i], arr[j]];
+          result.push(pair);
+        }
       }
     }
+    return result;
   }
-  return result;
-}
 </script>
 <div>Complexity: </div>
 <p><strong>O(N^2)</strong></p>
@@ -734,22 +734,22 @@ function findSum(arr, target) {
 <summary>Solution 2</summary>
 <pre>
 <script>
-function findSum(arr, target) {
-  const result = [];
-  const obj = {};
-  for (let i = 0; i < arr.length; i++) {
-    obj[arr[i]] = i;
-  }
-  for (const num in obj) {
-    const secondNum = target - num;
-    if (+num + secondNum === target) {
-      if (secondNum > num) {
-        result.push([+num, secondNum]);
+  function findSum(arr, target) {
+    const result = [];
+    const obj = {};
+    for (let i = 0; i < arr.length; i++) {
+      obj[arr[i]] = i;
+    }
+    for (const num in obj) {
+      const secondNum = target - num;
+      if (+num + secondNum === target) {
+        if (secondNum > num) {
+          result.push([+num, secondNum]);
+        }
       }
     }
+    return result;
   }
-  return result;
-}
 </script>
 <div>Complexity: </div>
 <p><strong>O(N^2) (algoritm speed: O(N^2) + memory: O(1))</strong></p>
@@ -760,18 +760,19 @@ function findSum(arr, target) {
 
 22. What will be in the output?
 
+```javascript
+let obj = { band: 'Metallica' };
+let obj1 = obj;
+obj = { band: 'Nirvana' };
+console.log(obj); //  ?
+console.log(obj1); // ?
+```
+
 <details>
 <summary></summary>
 <pre>
-<script>
-  let obj = { band: 'Metallica' };
-  let obj1 = obj;
-  obj = { band: 'Nirvana' };
-  console.log(obj);
-  console.log(obj1);
-</script>
-<div>Complexity: </div>
-<p><strong>O(N^2)</strong></p>
+{ band: 'Nirvana' }
+{ band: 'Metallica' }
 </pre>
 </details>
 
@@ -779,26 +780,26 @@ function findSum(arr, target) {
 
 23. What will be in the output?
 
+```javascript
+function someFn() {
+  try {
+    if (Math.random() >= 0.5) {
+      throw new Error('oops');
+    }
+    return 1;
+  } catch (e) {
+    return 2;
+  } finally {
+    return 3;
+  }
+}
+console.log(someFn());
+```
+
 <details>
 <summary></summary>
 <pre>
-<script>
-  function someFn() {
-    try {
-      if (Math.random() >= 0.5) {
-        throw new Error('oops');
-      }
-      return 1;
-    } catch(e) {
-      return 2;
-    } finally {
-      return 3;
-    }
-  }
-  console.log(someFn());
-</script>
-<div>Complexity: </div>
-<p><strong>O(N^2)</strong></p>
+3
 </pre>
 </details>
 
