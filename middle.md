@@ -1136,7 +1136,6 @@ console.log(five(plus(seven(minus(three())))));
 
 22. Write your own debounce function
 
-```javascript
 <details>
 <summary>Solution 1</summary>
 <pre>
@@ -1181,4 +1180,3 @@ console.log(five(plus(seven(minus(three())))));
 </pre>
 </details>
 ---
-```
